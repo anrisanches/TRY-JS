@@ -163,3 +163,195 @@
 //     }
 //     // Change code above this line
 // }
+
+/* 
+* Создай массив genres с элементами <Jazz> и <Blues>.
+* Добавте <Rock-&-Roll> в конце.
+* Выведите в консоль первый эл. массива.
+* Виведите в консоль последний эл. массива. Код должен работать для массива произвольной длинны.
+* Удалите первый эл. и выведите его в консоль.
+*Вставьте <Country> & <Raggy> в начало массива
+ */
+
+// const genres = ['Jazz', 'Blues'];
+// genres.push('Rock-&-Roll');
+// console.log(genres[0]);
+// console.log(genres[genres.length - 1]);
+// const delFirstEl = genres.shift();
+// console.log(delFirstEl);
+// genres.unshift('Country', 'Raggy');
+// console.log(genres);
+
+
+/* Напиши скрипт который просит пользователя ввести число в prompt до тех пор, пока посетитель не нажмет CANCEL и каждый за добавляет введенное значение к общей сумме
+* При загрузке страницы пользователю предлагается prompt ввести число. ВВод добавляется к значению переменной total.
+* Операция ввода числа продолжается да тех пор, пока позьзователь не нажмет Cancel в prompt.
+*После того как пользователь прекратил ввод нажав кнопку Cancel , показать Alert со строкой "Общая сумма чисел равна $сумма".
+* Делать проверку того, что пользователь ввел именно число, а не произвольный набор символов, не обязательно, но рекомендую. Если хочешь, в случае некоректного ввода, показывай alert с текстом "Было введено не число, попробуйте еще раз", при етом результат prompt плюсовать к общей сумме не нужно, после чего снова пользователю предлагается ввести числоо в prompt. */
+// let total = 0;
+// while (true) {
+//     let userInput = prompt("Add number on the string",'');
+//     if (userInput === null) {
+//         alert(`Общая сумма чисел равна ${total}`)
+//         break;
+//     } else if (isNaN(Number(userInput))) {
+//         alert(`Введите число`);
+//     } else {
+//         total += Number(userInput);
+//         continue;
+//     }
+// };
+
+// while (true) {
+//     let userInput = prompt("Add number on the string",'');
+//     if (isNaN(Number(userInput))) {
+//         alert(`Введите число`);
+//         continue;
+//     };
+//     if (userInput === null) {
+//         alert(`Общая сумма чисел равна ${total}`)
+//         break;
+//     }
+//     total += Number(userInput);
+// };
+
+/*
+*Напиши скрипт для вычисления площади прямоугольника со сторонами, значение которых хранятся в переменной values в виде строки. Значения гарантировано разделены пробелом
+ */
+
+// const values = '8 11';
+// const numbers = values.split(' ');
+// let counter = 1;
+// for (const number of numbers) {
+//     counter *= number
+// };
+
+// const values = '8 11';
+// let area = 1;
+// function splitValue() {
+//     const splitArr = values.split(' ');
+//     return splitArr
+// };
+
+
+// function areaCalculation(func) {
+//     console.log(func());
+//     for (const value of func() ) {
+//         area *= value
+//     };
+//     return area;
+// };
+
+// console.log(splitValue());
+// areaCalculation(splitValue);
+// console.log(areaCalculation(splitValue));
+
+// function areaCalculation (a, b) {
+//         const countArea = a * b;
+//         return countArea
+//     }
+// areaCalculation(8,11);
+
+/*
+*Напиши скрипт для перебора массива fruits циклом for. Для каждого эл. массива выведи в консоль строку в формате номер_эл: значение_эл. Нумерация эл. должна начинатся с 1.
+ */
+
+// const fruits = ["banana", "cherry", "orange", "kivi"];
+// for (let i = 0; i < fruits.length; i+=1) {
+//     console.log(`${i+1} - ${fruits[i]}`)
+// }
+
+/*
+*Напиши скрипт который выводит в консоль имя и телефон пользователя. В переменных names и phones хранятся строки имен и телефонных номеров, разделенные запятыми. Порядковый номер имен и телефонов в строках указывают на соответствие. Количевство имен и телефонов гарантировано одинаковое.
+ */
+
+// const names = 'Jacoob,William,Solomon,Artemis';
+// const phones = '8097, 8063,8050,8067';
+
+// const arrNames = names.split(',');
+// const arrPhones = phones.split(',');
+
+// for (let i = 0; i < arrNames.length; i+=1) {
+//     console.log(`${arrNames[i]} - ${arrPhones[i]}`);
+// }
+
+/*
+*Напиши скрипт который выводит в консоль все слова строки кроме первого и последнего. Результирующая строка не должна начинатся или заканчиватся пробельным символом. Скрипт должен работать для любой строки.
+ */
+
+// const string = 'Welcome to the future';
+// const srtingArr = string.split(' ');
+// srtingArr.shift();
+// srtingArr.pop();
+// const newString = srtingArr.join(' ')
+// console.log(srtingArr.join(' '));
+
+/*
+*Напиши скрипт который <разворачивает> строку (обратный порядок букв) и выводит в консоль.
+ */
+
+// const string = 'Welcome to the future';
+// console.log(string.split('').reverse().join(' '));
+
+/*
+*Напиши скрипт сортировки массива строк в алфавитном порядку по первой букве
+ */
+
+// const langs = ['python', 'javascript', 'c++', 'haskell', 'php', 'ruby'];
+// const langsSort = langs.sort();
+// const sortByFn = langs.sort(function compare(a, b) {
+//     if (a < b) {
+//         return -1;
+//     }
+//     if (a > b) {
+//         return 1;
+//     }
+//     return 0;
+// });
+// console.log(langsSort);
+// console.log(sortByFn);
+
+// const months = ['March', 'Jan', 'Feb', 'Dec'];
+// months.sort(function compare(a, b) {
+//     if (a < b) {
+//         return -1;
+//     }
+//     if (a > b) {
+//         return 1;
+//     }
+//     return 0;
+// });
+// console.log(months);
+
+// const numbers = [3, 45, 7, 23, 0, -6, 2, 4, 67, 98, 333, 343, 334];
+// const numbersSort = numbers.sort(
+//     function compare(a, b) {
+//         return a - b;
+//     }
+// );
+// console.log(numbersSort);
+
+/*
+*Напиши скрипт поиска самого маленького числа в миссиве. Код должен работать для любого массива чисел. Используй цикл для решения задачи
+ */
+
+// const numbers = [3213, 45, 7, 23, 0, -6, 2, 4, 67, 98, 333, 343, 334];
+// let smallestNumber = numbers[0];
+// for (let i = 0; i < numbers.length; i+=1) {
+//     // console.log(numbers[i]);
+//     if (smallestNumber > numbers[i]) {
+//         smallestNumber = numbers[i]
+//     }
+// };
+
+// for (const number of numbers) {
+//     if (smallestNumber > number) {
+//         smallestNumber = number
+//     }
+// }
+
+// console.log(smallestNumber)
+
+
+
+

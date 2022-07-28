@@ -45,7 +45,7 @@
 //     let message = `Login ${loginToFind} is not find`;
 //     for (const login of allLogins) {
 //         if(login === loginToFind){
-//             message = `Login ${loginToFind} is find` 
+//             message = `Login ${loginToFind} is find`
 //         }
 //     }
 //     return message;
@@ -54,7 +54,7 @@
 // function findLogin (allLogins, loginToFind){
 //     for (const login of allLogins) {
 //         if(login === loginToFind){
-//             return `Login ${loginToFind} is find` 
+//             return `Login ${loginToFind} is find`
 //         }
 //     }
 //     return `Login ${loginToFind} is not find`;
@@ -104,7 +104,7 @@
 //     }
 
 //     return invertedString
-// } 
+// }
 
 // console.log(changeCase('qwERty'));
 
@@ -167,7 +167,7 @@
     
 //     if(number > value){
 //       newNumbers.push(number);
-//     }    
+//     }
 //   }
 //   return newNumbers
 //  // Change code above this line
@@ -176,22 +176,22 @@
 // console.log(filterArray([12, 24, 8, 41, 76], 20));
 
 
-function getCommonElements(array1, array2) {
+// function getCommonElements(array1, array2) {
   // Change code below this line
-  let newArray = [];
+  // let newArray = [];
 
-  for (let item1 of array1) {
+  // for (let item1 of array1) {
     // console.log(item2);
-    if(array2.includes(item1)){
-      newArray.push(item1)
-    }
-}
-return newArray;
+    // if(array2.includes(item1)){
+      // newArray.push(item1)
+//     }
+// }
+// return newArray;
 
  // Change code above this line
-}
+// }
 
-console.log(getCommonElements([1, 2, 3], [2, 1, 17, 19]));
+// console.log(getCommonElements([1, 2, 3], [2, 1, 17, 19]));
 
 // const a = 3 % 3;
 // const b = 4 % 3;
@@ -274,4 +274,10 @@ console.log(getCommonElements([1, 2, 3], [2, 1, 17, 19]));
 // }
 
 // console.log(includes(["apple", "plum", "pear", "orange"], "plum"));
+
+
+// ------------------NEW START-----------------------------------
+// 
+// 
+// jdjdj
 
