@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // const cart = [4, 23, 65, 86, 12, 54];
 // let total = 0;
@@ -32,7 +32,6 @@
 // logItems (['Mango', 'Kiwi', 'Poly', 'Ajax']);
 // logItems ([1, 2, 3, 4, 5]);
 // logItems (['Клавиатура', 'наушники', 'часы']);
-
 
 // const logins = ['Mama', 'papa', 'aurora2009', 'merlin2007'];
 // const loginToFind = 'aurora2009';
@@ -152,7 +151,7 @@
 //   for( let i = min; i < max +1; i += 1){
 //     numbers.push(i)
 //   }
-  
+
 //   // Change code above this line
 //   return numbers;
 // }
@@ -164,7 +163,7 @@
 //   let newNumbers = [];
 
 //   for (const number of numbers) {
-    
+
 //     if(number > value){
 //       newNumbers.push(number);
 //     }
@@ -175,20 +174,19 @@
 
 // console.log(filterArray([12, 24, 8, 41, 76], 20));
 
-
 // function getCommonElements(array1, array2) {
-  // Change code below this line
-  // let newArray = [];
+// Change code below this line
+// let newArray = [];
 
-  // for (let item1 of array1) {
-    // console.log(item2);
-    // if(array2.includes(item1)){
-      // newArray.push(item1)
+// for (let item1 of array1) {
+// console.log(item2);
+// if(array2.includes(item1)){
+// newArray.push(item1)
 //     }
 // }
 // return newArray;
 
- // Change code above this line
+// Change code above this line
 // }
 
 // console.log(getCommonElements([1, 2, 3], [2, 1, 17, 19]));
@@ -267,17 +265,186 @@
 //   if(element === value){
 //     return true
 //   }
-  
+
 // }
 // return false
 //   // Change code above this line
 // }
-
 // console.log(includes(["apple", "plum", "pear", "orange"], "plum"));
 
-
 // ------------------NEW START-----------------------------------
-// 
-// 
-// jdjdj
 
+/**
+ * Напиши функцию calculateTotalPrice (items) которая принимает массив цен и возвращает их сумму
+ */
+// const cart = [4, 23, 65, 86, 12, 54];
+// function calculateTotalPrice(value) {
+//     let total = 0;
+//     for (const item of value) {
+//         total += item;
+//     }
+//     return total;
+// }
+// const result1 = calculateTotalPrice([1, 2, 3]);
+// console.log(`Общая сумма покупок: -`, result1);
+// console.log(calculateTotalPrice([10, 200, 300]));
+// console.log(calculateTotalPrice([4, 23, 65, 86, 12, 54]));
+
+/**
+ * Напиши функцию logItems(items) для перебора и логирования массива
+ */
+
+// function logItems(items) {
+//     for (const item of items) {
+//         console.log(item);
+//     }
+// }
+// logItems(['Mango', 'Kiwi', 'Poly']);
+// logItems([1, 2, 3, 4, 5]);
+// logItems(['клавиатура', 'наушники', 'часы']);
+
+/**
+ * Напиши функцию findLogins(allLogin, login) для поиска логина
+ * Если логина нет, вывести в консоль сообщение "Пользователь [логина] не найден"
+ * Если нашли логин, вывести сообщение "Пользователь [логина] найден"
+ */
+
+// const logins = ['Mama', 'papa', 'aurora2009', 'merlin2007'];
+// const loginToFind = 'aurora2009';
+
+// function findLogins(allLogins, loginToFind) {
+//   for (const login of allLogins) {
+//       if (login === loginToFind) {
+//           return `Пользователь ${loginToFind} найден`;
+//       }
+//   }
+// return `Пользователь ${loginToFind} не найден`;
+
+//     return allLogins.includes(loginToFind)
+//         ? `Пользователь ${loginToFind} найден`
+//         : `Пользователь ${loginToFind} не найден`;
+// }
+
+// function findLogins(allLogins, loginToFind) {
+//     return allLogins.includes(loginToFind)
+//         ? `Пользователь ${loginToFind} найден`
+//         : `Пользователь ${loginToFind} не найден`;
+// }
+
+// console.log(findLogins(logins, 'aurora2009'));
+// console.log(findLogins(logins, 'aurora2008'));
+// console.log(findLogins(logins, 'merlin2007'));
+
+/**
+ * Напиши функцию findSmallestNumber(numbers) для поиска самого маленького числа в массиве
+ * при условии что числа уникальные (не повторяются)
+ */
+
+// const numbers = [1, 4, 6, 91, -5];
+// function findSmallestNumbers(arr) {
+//     let smallestNumber = arr[0];
+//     for (const item of arr) {
+//         if (smallestNumber > item) {
+//             smallestNumber = item;
+//         }
+//     }
+//     return smallestNumber;
+// }
+
+// console.log(findSmallestNumbers([3, 6, 8, 2, -1]));
+// console.log(findSmallestNumbers([93, 86, 54, 23, 34]));
+
+/**
+ * Напиши функцию changeCase(string) которая заменяет регистр
+ * Каждый символ в строке на противоположный
+ */
+
+// function changeCase(string) {
+//     let invertedString = '';
+//     const letters = string.split('');
+
+//     for (const letter of letters) {
+//         const isInLowerCase = letter === letter.toLowerCase();
+
+//         invertedString += isInLowerCase ? letter.toUpperCase() : letter.toLowerCase();
+//     }
+//     return invertedString;
+// }
+
+// console.log(changeCase('qweSDFa'));
+// console.log(changeCase('ASDa'));
+
+/**
+ * Напиши функцию slugify(string) которая получает строку и возвращает URL-slug
+ * Строка состоит только из букв
+ */
+
+// const title = 'Top 10 benefits of React framework'
+
+// function slugify(string) {
+//     const slugify = string.toLowerCase().split(' ').join('-');
+//     return slugify;
+// }
+
+// console.log(slugify('Top 10 benefits of React framework'));
+
+/**
+ *-------------- Псевдо массив arguments and Array.from и ...
+ */
+
+// function fn() {
+//     console.log(arguments);
+
+//     const args = Array.from(arguments);
+//     console.log(args);
+// }
+
+// fn(1, 2, 3);
+// fn(1, 2, 3, 4, 5);
+// fn(1, 2, 3, 4, 5, 6, 7);
+
+// function fn(...args) {
+//     console.log(args);
+// }
+
+// fn(1, 2, 3);
+// fn(1, 2, 3, 4, 5);
+// fn(1, 2, 3, 4, 5, 6, 7);
+
+/**
+ * Напиши функцию add для сложения произвольного количества аргументов (чисел)
+ * Array.from()
+ * Операция ...(rest)
+ */
+
+// function add(...numbers) {
+//     let total = 0;
+//     for (const number of numbers) {
+//         total += number;
+//     }
+//     return total;
+// }
+
+// console.log(add(1, 2, 3, 4, 5));
+
+/**
+ * Напиши функцию filterNumbers(array[, number1, ...]) которая:
+ * -1 аргументом принимает массив чисел
+ * -после 1 аргумента может быть произвольное количество других аргументов которые будут числами.
+ * - Функция должна вернуть массив, в котором будут только те аргументы, начиная со второго, для которых есть аналог в оригинальном массиве.
+ */
+
+// function filterNumbers(numbers, ...args) {
+//     const repeatNumber = [];
+
+//     for (const number of numbers) {
+//         if (args.includes(number)) {
+//             repeatNumber.push(number);
+//         }
+//     }
+//     return repeatNumber;
+// }
+
+// console.log(filterNumbers([10, 15, 25, 30, 18, 19], 15, 18, 11, 99, 33));
+
+//Practice-----------------------------------------------------
