@@ -448,3 +448,163 @@
 // console.log(filterNumbers([10, 15, 25, 30, 18, 19], 15, 18, 11, 99, 33));
 
 //Practice-----------------------------------------------------
+/**
+ * Напиши функцию calcBMI(weight, height) которая рассчитывает и возвращает индекс массы тела человека. Для этого необходимо разделить вес в кг на квадрат высоты человека в метрах.
+ * Вес и высота будут специально переданы как строки. Нецелые числа могут быть заданы в виде 24.7 или 24,7, то есть в качестве разделителя дробной части может быть запятая.
+ * Индекс массы тела необходимо округлить до 1 цифры после запятой
+ */
+// const bmi = calcBMI('88,3', '1.75');
+
+// function calcBMI(weight, height) {
+//     const numericWeight = weight.replace(',', '.');
+//     const numericHeight = height.replace(',', '.');
+
+//     const totalBMI = numericWeight / Math.pow(numericHeight, 2);
+//     const fixedTotalBMI = totalBMI.toFixed(1);
+
+//     return fixedTotalBMI;
+// }
+
+// console.log(bmi);
+
+/**
+ *Напиши функцию min(a,b) которая возвращает меньшее из чисел а и b
+ */
+
+// function min(a, b) {
+// let message;
+// if (a < b) {
+//     message = `${a} < ${b}`;
+// } else if (a > b) {
+//     message = `${b} < ${a}`;
+// } else {
+//     message = `${a} равно ${b}`;
+// }
+// return message;
+
+// if (a < b) {
+//         return (message = `${a} меньше ${b}`);
+//     }
+//     return (message = `${a} больше ${b}`);
+// }
+
+// console.log(min(2, 5));
+// console.log(min(3, -1));
+// console.log(1, 1);
+
+/**
+ * функция для вычисления прямоугольника
+ */
+
+// function getRectArea(dimensions) {
+// let a = Number(dimensions.split(' ')[0]);
+// let b = Number(dimensions.split(' ')[1]);
+// console.log(typeof a);
+// console.log(b);
+// return a * b;
+// }
+
+// console.log(getRectArea('8 11'));
+
+/**
+ * Напиши функцию logItems(items), которая получает массив и использует цикл for, который для каждого элемента массива будет выводить в консоль сообщение в формате <номер эл> - <значение эл>, нумерация эл. должна начинаться с 1
+ */
+
+// function logItems(args) {
+//     for (let i = 0; i < args.length; i += 1) {
+//         const arg = args[i];
+//         console.log(`${i + 1} - ${arg}`);
+//     }
+// }
+
+// logItems(['mango', 'poly', 'ajax']);
+// logItems(['apple', 'orange', 'cherry', 'sweet cherry', 'lemon']);
+/**
+ * Напиши функцию printContactsInfo(names, phones) которая выводит в консоль имя и телефонный номер пользователя. В параметры names и phones будут переданы строки имен и телефонных номеров, разделенные запятыми. Порядковый номер имен и телефонов в строках указывают на соответствие. Количество имен и телефонов гарантировано одинаковое
+ */
+
+// function printContactsInfo(names, phones) {
+//     let contactInfo = '';
+//     const splitNames = names.split(',');
+//     const splitPhones = phones.split(',');
+
+//     for (let i = 0; i < splitNames.length; i += 1) {
+//         contactInfo = `${splitNames[i]} - ${splitPhones[i]}`;
+//         console.log(contactInfo);
+//     }
+//     return contactInfo;
+// }
+
+// printContactsInfo('Jacob,William,Solomon,Artemis', '8097, 8063,8050,8067');
+
+/**
+ * Напиши функцию findLargestNumber(numbers) которая ищет самое большое число в массиве
+ */
+
+// function findLargestNumber(numbers) {
+//     let largestNumber = numbers[0];
+
+//     for (const number of numbers) {
+//         if (largestNumber < number) {
+//             largestNumber = number;
+//         }
+//     }
+//     return largestNumber;
+// }
+
+// console.log(findLargestNumber([2, 17, 94, 1, 23, 37]));
+// console.log(findLargestNumber([49, 5, 2, 86, 45]));
+
+/**
+ *Напиши функцию calAverage() которая принимает произвольное количество аргументов и возвращает их среднее значение. Все аргументы будут только числами.
+ */
+
+// function calAverage(...args) {
+//     let averageNumber = 0;
+//     for (let i = 0; i < args.length; i += 1) {
+//         const arg = args[i];
+//         averageNumber += arg;
+//     }
+//     averageNumber /= args.length;
+//     return averageNumber;
+// }
+
+// console.log(calAverage(1, 2, 3, 4));
+// console.log(calAverage(14, 8, 2));
+// console.log(calAverage(27, 43, 2, 8, 36));
+
+/**
+ * Напиши функцию formateTime(minutes) которая переведёт значение minutes (количество минут) в строку в формате часов и минут HH:MM.
+ */
+
+// function formateTime(minutes) {
+//     let hours = Math.floor(minutes / 60);
+//     let minute = minutes % 60;
+
+//     if (hours < 10) {
+//         hours = `0${hours}`;
+//     }
+
+//     if (minute < 10) {
+//         minute = `0${minute}`;
+//     }
+//     const stringTime = `${hours}:${minute}`;
+//     return stringTime;
+// }
+
+//-----variant 2 ---------------
+// function formateTime(minutes) {
+//     const hours = Math.floor(minutes / 60);
+//     const minute = minutes % 60;
+
+//     const doubleDigitHours = String(hours).padStart(2, '0');
+//     const doubleDigitMinute = String(minute).padStart(2, '0');
+
+//     // const stringFormatTime = `${doubleDigitHours}:${doubleDigitMinute}`;
+//     // return stringFormatTime;
+
+//     return `${doubleDigitHours}:${doubleDigitMinute}`;
+// }
+// console.log(formateTime(70));
+// console.log(formateTime(450));
+// console.log(formateTime(1441));
