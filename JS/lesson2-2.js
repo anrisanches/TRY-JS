@@ -608,3 +608,44 @@
 // console.log(formateTime(70));
 // console.log(formateTime(450));
 // console.log(formateTime(1441));
+
+/**
+ * Напишите функции для работы  с коллекцией обучающих курсов courses:
+ * addCourses(name)- добавляет курс в конец коллекции
+ * removeCourse(name)- удаляет курс из коллекции
+ * updateCourse(oldName, newName)- изменяет имя на новое
+ */
+
+// const courses = ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL'];
+
+// function addCourse(name) {
+//     if (courses.includes(name)) {
+//         return 'You have this course';
+//     }
+//     courses.push(name);
+//     return courses;
+// }
+
+// // addCourse('CSS'); //'у вас уже есть такой курс'
+// console.log(addCourse('Express'));
+// console.log(addCourse('CSS'));
+
+// function removeCourse(name) {
+//     if (courses.includes(name)) {
+//         const deleteCourse = courses.splice(courses.indexOf(name), 1);
+//         return courses;
+//     }
+//     return 'Course with this name not found';
+// }
+// // removeCourse('React');
+// // removeCourse('Vue'); // 'Курс с таким именем не найден'
+// console.log(removeCourse('React'));
+// console.log(removeCourse('Vue'));
+
+// function updateCourse(oldName, newName) {
+//     courses.splice(courses.indexOf(oldName), 1, newName);
+//     return courses;
+// }
+
+// updateCourse('Express', 'NestJS');
+// console.log(courses);
