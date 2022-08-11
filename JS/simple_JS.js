@@ -3,9 +3,9 @@
 // console.table(friends);
 // for (let i = 0; i < friends.length; i++) {
 //     const el = friends[i];
-    // console.log(el);
-    // console.log(`${i} - ${el}`);
-    // friends[i] += '-STRING'
+// console.log(el);
+// console.log(`${i} - ${el}`);
+// friends[i] += '-STRING'
 // };
 // console.log(friends);
 
@@ -90,3 +90,67 @@
 // console.log(deleteCard)
 // const removeCard = cards.splice(1, 0, '2')
 // console.log(removeCard);
+
+// -------------------------------------------------------------------
+// const firstPart = 'likes';
+// const secondPart = 'likes';
+
+// const id = Symbol('id');
+// // Symbol('id') --- не отображается при переборе
+
+// let userInfo = {
+//     name: 'Mango',
+//     age: 30,
+// 'Java Script': true,
+
+//     address: {
+//         city: 'NewYork',
+//         street: 'HighWay',
+//     },
+
+//     [firstPart + ' JavaScript']: true,
+//     [secondPart]: false,
+//     [id]: 'Some value',
+// };
+
+// console.table(userInfo);
+// console.log(userInfo['Java Script']);
+
+// console.log(userInfo['likes JavaScript']);
+// console.log(userInfo.likes);
+// console.log(userInfo[secondPart]);
+// console.log(userInfo['address'].city);
+// console.log(userInfo['address']['street']);
+
+// -------------------------------------------------------------
+
+function makeUserInfo(name, age) {
+    return {
+        name,
+        age,
+    };
+}
+
+const user = makeUserInfo('Mango', 30);
+user.gender = 'men';
+user.age = 25;
+user.removeKey = 'value';
+
+// console.table(user);
+
+delete user.removeKey;
+// удалить свойство
+
+// console.log(user);
+
+const userInfo = user;
+
+userInfo.gender = 'women';
+// console.log(userInfo);
+
+//Дублирование объекта Object.assign(куда(объект), что(свойство №1), что(свойство №2), ...);
+
+const copyUserInfo = Object.assign({}, userInfo);
+
+copyUserInfo.height = true;
+console.log(Object.keys(copyUserInfo));

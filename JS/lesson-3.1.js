@@ -467,7 +467,7 @@ cart.add({ name: 'apple', price: 60 });
 cart.add({ name: 'apple', price: 60 });
 cart.add({ name: 'strawberry', price: 110 });
 
-// console.table(cart.getItem());
+console.table(cart.getItem());
 
 // cart.remove('apple');
 // console.log(cart.getItem());
@@ -482,6 +482,6 @@ cart.add({ name: 'strawberry', price: 110 });
 // cart.decreaseQuantity('apple');
 // cart.decreaseQuantity('apple');
 
-// console.log(cart.getItem());
+console.log(cart.getItem());
 
-// console.log('Total: ',cart.countTotalPrice());
+console.log('Total: ', cart.countTotalPrice());
