@@ -124,33 +124,67 @@
 
 // -------------------------------------------------------------
 
-function makeUserInfo(name, age) {
-    return {
-        name,
-        age,
-    };
-}
+// function makeUserInfo(name, age) {
+//     return {
+//         name,
+//         age,
+//     };
+// }
 
-const user = makeUserInfo('Mango', 30);
-user.gender = 'men';
-user.age = 25;
-user.removeKey = 'value';
+// const user = makeUserInfo('Mango', 30);
+// user.gender = 'men';
+// user.age = 25;
+// user.removeKey = 'value';
 
-// console.table(user);
+// // console.table(user);
 
-delete user.removeKey;
-// удалить свойство
+// delete user.removeKey;
+// // удалить свойство
 
-// console.log(user);
+// // console.log(user);
 
-const userInfo = user;
+// const userInfo = user;
 
-userInfo.gender = 'women';
+// userInfo.gender = 'women';
 // console.log(userInfo);
 
 //Дублирование объекта Object.assign(куда(объект), что(свойство №1), что(свойство №2), ...);
 
-const copyUserInfo = Object.assign({}, userInfo);
+// const copyUserInfo = Object.assign({}, userInfo);
 
-copyUserInfo.height = true;
-console.log(Object.keys(copyUserInfo));
+// copyUserInfo.height = true;
+// console.log(Object.keys(copyUserInfo));
+
+const firstPart = 'likes';
+const secondPart = 'likes';
+
+const id = Symbol('id');
+// Symbol('id') --- не отображается при переборе
+
+let userInfo = {
+    name: 'Mango',
+    age: 30,
+    'Java Script': true,
+
+    address: {
+        city: 'NewYork',
+        street: 'HighWay',
+    },
+
+    [firstPart + ' JavaScript']: true,
+    [secondPart]: false,
+    [id]: 'Some value',
+};
+
+console.table(userInfo);
+console.table(userInfo.address.city);
+// console.log(userInfo?.address?.house);
+// console.log(userInfo.address.house);
+
+// if ('age' in userInfo) {
+//     console.log(userInfo.age);
+// }
+
+// if (userInfo.age) {
+//     console.log(userInfo.age);
+// }
