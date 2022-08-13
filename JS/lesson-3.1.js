@@ -405,6 +405,7 @@
 
 // console.log(Object.keys(x).length);
 
+// ---------------------------------------------------------
 const cart = {
     item: [],
     getItem(product) {
@@ -459,15 +460,16 @@ const cart = {
         }
     },
 };
+// -----------------------------------------------------------------------
 
 // console.table(cart.getItem());
 
-cart.add({ name: 'lemon', price: 50 });
-cart.add({ name: 'apple', price: 60 });
-cart.add({ name: 'apple', price: 60 });
-cart.add({ name: 'strawberry', price: 110 });
+// cart.add({ name: 'lemon', price: 50 });
+// cart.add({ name: 'apple', price: 60 });
+// cart.add({ name: 'apple', price: 60 });
+// cart.add({ name: 'strawberry', price: 110 });
 
-console.table(cart.getItem());
+// console.table(cart.getItem());
 
 // cart.remove('apple');
 // console.log(cart.getItem());
@@ -482,6 +484,235 @@ console.table(cart.getItem());
 // cart.decreaseQuantity('apple');
 // cart.decreaseQuantity('apple');
 
-console.log(cart.getItem());
+// console.log(cart.getItem());
 
-console.log('Total: ', cart.countTotalPrice());
+// console.log('Total: ', cart.countTotalPrice());
+
+//-------------------------------practice with Denis
+
+/**
+ * Напиши скрипт для объекта user, последовательно:
+ * - добавляет поле mood со значением 'happy'
+ * - заменяет значение hobby на 'skydiving'
+ * - заменяет значение premium на false
+ * - выводит содержимое объекта user в формате ключ: значение исп Object.keys() и for...of
+ */
+
+// const user = {
+//     name: 'Mango',
+//     age: 20,
+//     hobby: 'html',
+//     premium: true,
+// };
+
+// user.mood = 'happy';
+// user.hobby = 'skydiving';
+// user.premium = false;
+
+// const keysUser = Object.keys(user);
+
+// for (const key of keysUser) {
+//     console.log(`${key}: ${user[key]}`);
+// }
+
+// console.table(user);
+
+/**
+ * У нас есть объект, в котором хранятся зарплаты нашей команды. Напиши код для суммирования всех зарплат и сохрани результат в переменной sum. Если объект salaries пуст, то результат должен быть 0
+ */
+
+// const salaries = {
+//     John: 100,
+//     Ann: 160,
+//     Pete: 130,
+// };
+
+// function getTotalSalaries(obj) {
+//     let sum = 0;
+
+//     const valuesSum = Object.values(obj);
+//     for (const value of valuesSum) {
+//         sum += value;
+//     }
+//     return sum;
+// }
+
+// console.log(getTotalSalaries(salaries));
+
+/**
+ * Напиши функцию calcTotalPrice(array, stoneName), которая принимает массив объектов и строку с названием камня. Функция считает и возвращает общую стоимость камней с таким именем, ценой и количеством из объекта
+ */
+
+// const stones = [
+//     { name: 'emerald', price: 1300, quantity: 4 },
+//     { name: 'diamond', price: 2700, quantity: 3 },
+//     { name: 'sapphire', price: 400, quantity: 7 },
+//     { name: 'rubble', price: 200, quantity: 2 },
+// ];
+
+// function calcTotalSalaries(array, stonesName) {
+//     for (const obj of array) {
+//         if (obj.name === stonesName) {
+//             let totalQuantity = 0;
+
+//             const keys = Object.keys(obj);
+
+//             totalQuantity = obj['price'] * obj['quantity'];
+
+//             return `Item name: ${obj['name']}, quantity: ${obj['quantity']}, total sum: ${totalQuantity}`;
+//         }
+//     }
+// }
+
+// console.log(calcTotalSalaries(stones, 'emerald'));
+// console.log(calcTotalSalaries(stones, 'sapphire'));
+// console.log(calcTotalSalaries(stones, 'diamond'));
+// console.log(calcTotalSalaries(stones, 'rubble'));
+
+/**
+ * Напиши скрипт управления личным кабинетом интернет банка. Есть объект account в котором необходимо реализовать метод для работы с балансом и историей транзакций.
+ *
+ * типов транзакций всего 2
+ * можно положить либо снять со счета
+ */
+
+const Transaction = {
+    DEPOSIT: 'deposit',
+    WITHDRAW: 'withdraw',
+};
+
+/**
+ * каждая транзакция это объект со свойством id, type, amount
+ */
+
+const account = {
+    // текущий баланс счета
+    balance: 0,
+
+    //история транзакций
+
+    transaction: [],
+
+    /**
+     * метод создает и возвращает объект транзакций.
+     * принимает сумму и тип транзакций
+     */
+    createTransaction(amount, type) {
+        // const generateId = function () {
+        //     return Math.floor(Math.random() * (2e5 - 1.1e5));
+        // };
+
+        const generateId = function () {
+            return account.transaction.length + 1 + 'az';
+        };
+
+        return {
+            id: generateId(),
+            type,
+            amount,
+            balance: this.balance,
+        };
+    },
+
+    /**
+     * метод отвечающий за добавление суммы к балансу.
+     * Принимает сумму транзакций
+     * Вызывает createTransaction для создания объекта транзакции после чего добавляет его в историю транзакции
+     */
+    deposit(amount) {
+        // return (this.balance += amount);
+        this.balance += amount;
+
+        const newTransaction = this.createTransaction(
+            amount,
+            Transaction.DEPOSIT,
+        );
+
+        this.transaction.push(newTransaction);
+
+        return `Пополнение прошло успешно на ${amount}, общая сумма ${this.balance} `;
+    },
+
+    /**
+     * Метод отвечающий за снятие суммы с баланса.
+     * Принимает сумму транзакции
+     * Вызывает createTransaction для создания объекта транзакции, после чего добавляет его в историю транзакций
+     *
+     * Если amount больше чем текущий баланс, выводит сообщение о том, что снятие такой суммы не возможно, недостаточно средств
+     */
+
+    withdraw(amount) {
+        const newWithdraw = this.createTransaction(
+            amount,
+            Transaction.WITHDRAW,
+        );
+
+        if (this.balance > amount) {
+            this.balance -= amount;
+
+            this.transaction.push(newWithdraw);
+
+            return `Операция успешна, с вашего счета снято ${amount}, остаток ${this.balance}`;
+        } else {
+            console.log(`У вас недостаточно средств для снятия `);
+        }
+    },
+
+    /**
+     *  Метод возвращает текущий баланс
+     */
+    getBalance() {
+        return this.balance;
+    },
+
+    /**
+     * Метод ищет и возвращает текущий баланс по id
+     */
+    getTransactionDetails(id) {
+        for (const objs of this.transaction) {
+            if (objs.id === id) {
+                return `Ваш баланс по id: ${objs.balance}`;
+            }
+
+            // const values = Object.values(objs);
+            // if (values.includes(id)) {
+            //     return `Ваш баланс по поиску: ${objs.balance}`;
+            // }
+        }
+        return 'Такой операции нет';
+    },
+
+    /**
+     * Метод возвращает количество средств определенного типа из всей истории транзакций
+     */
+    getTransactionTotal(type) {
+        let totalTypeTransaction = 0;
+
+        for (const objs of this.transaction) {
+            // console.log(objs);
+
+            const values = Object.values(objs);
+            if (values.includes(type)) {
+                totalTypeTransaction += objs.amount;
+            }
+        }
+        return `Общая сумма ${type}: ${totalTypeTransaction}`;
+    },
+};
+
+account.deposit(500);
+console.log(account.deposit(400));
+console.log(account.deposit(200));
+
+console.log(account.withdraw(120));
+console.log(account.withdraw(2000));
+console.log(account.withdraw(300));
+console.log(account.deposit(200));
+
+console.log(account.getTransactionDetails('3az'));
+
+console.table(account.transaction);
+console.log(account.getBalance());
+
+console.log(account.getTransactionTotal(Transaction.DEPOSIT));
+console.log(account.getTransactionTotal(Transaction.WITHDRAW));
