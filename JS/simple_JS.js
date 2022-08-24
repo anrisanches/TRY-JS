@@ -302,3 +302,135 @@ for (const key in apartment) {
 
     // Change code above this line
 }
+
+/*Напиши функцию makeTask(data) которая принимает один параметр data - объект со следующими свойствами.
+text - текст задачи.
+category - категория задачи.
+priority - приоритет задачи.
+Функция должна составить и вернуть новый объект задачи, не изменяя напрямую параметр data. В новом объекте должно быть свойство completed, значение которого хранится в одноимённой локальной переменной.
+В параметре data гарантированно будет только свойство text, а остальные два, category и priority, могут отсутствовать. Тогда, в новом объекте задачи, в свойствах category и priority должны быть значения по умолчанию, хранящиеся в одноимённых локальных переменных.*/
+function makeTask(data) {
+    const completed = false;
+    const category = "General";
+    const priority = "Normal";
+  // Change code below this line
+
+    const newObj = { completed, category, priority, ...data };
+    
+    return newObj
+
+
+  // Change code above this line
+}
+
+makeTask({ category: "Homemade", priority: "Low", text: "Take out the trash" });
+console.log(makeTask({ category: "Homemade", priority: "Low", text: "Take out the trash" }));
+
+/*Добавь объекту bookShelf ещё два метода, которые пока что будут возвращать просто строки по аналогии с getBooks() и addBook(bookName).
+Метод removeBook(bookName) будет удалять книгу по имени. Возвращает строку "Deleting book <имя книги>", где <имя книги> это значение параметра bookName.
+Метод updateBook(oldName, newName) будет обновлять название книги на новое. Возвращает строку "Updating book <старое имя> to <новое имя>", где <старое имя> и <новое имя>это значения параметров oldName и newName соотвественно.*/
+
+const bookShelf = {
+  // Change code below this line
+    books: ["The last kingdom", "The guardian of dreams","Red sunset","Sands of dune"],
+    getBooks() {
+    return "Returning all books";
+    },
+    addBook(bookName) {
+    return `Adding book ${bookName}`;
+    },
+    removeBook(bookName){
+        for (let book of this.books) {
+            if(book === bookName){
+            this.books.splice(this.books.indexOf(bookName),1)
+            }
+        }
+        return `Deleting book ${bookName}` 
+    },
+
+    updateBook(oldName, newName) {
+        const oldNameIndex = this.books.indexOf(oldName)
+        for (const book of this.books) {
+            if (book === oldName) {
+                this.books.splice(oldNameIndex, 1, newName)
+            }
+        };
+
+    return `Updating book ${oldName} to ${newName}`
+}
+
+  // Change code above this line
+    };
+    
+console.log(bookShelf.removeBook("Red sunset"));
+console.log(bookShelf.updateBook("Sands of dune", "Dune"));
+console.log(bookShelf.books);
+
+const atTheOldToad = {
+    potions: [
+    { name: "Speed potion", price: 460 },
+    { name: "Dragon breath", price: 780 },
+    { name: "Stone skin", price: 520 },
+    ],
+  // Change code below this line
+    getPotions() {
+    return this.potions;
+    },
+    addPotion(newPotion) {
+    if (this.potions.includes(newPotion)) {
+        return `Error! Potion ${newPotion} is already in your inventory!`;
+    }
+
+    this.potions.push(newPotion);
+    },
+    removePotion(potionName) {
+    const potionIndex = this.potions.indexOf(potionName);
+
+    if (potionIndex === -1) {
+        return `Potion ${potionName} is not in inventory!`;
+    }
+
+    this.potions.splice(potionIndex, 1);
+    },
+    updatePotionName(oldName, newName) {
+    const potionIndex = this.potions.indexOf(oldName);
+
+    if (potionIndex === -1) {
+        return `Potion ${oldName} is not in inventory!`;
+    }
+
+    this.potions.splice(potionIndex, 1, newName);
+    },
+  // Change code above this line
+};
+
+console.log(atTheOldToad.addPotion({ name: "Invisibility", price: 620 }));
+console.log(atTheOldToad.addPotion({ name: "Power potion", price: 270 }));
+console.log(atTheOldToad.addPotion({ name: "Dragon breath", price: 700 }));
+console.log(atTheOldToad.addPotion({ name: "Stone skin", price: 240 }));
+console.log(atTheOldToad.removePotion("Dragon breath"));
+console.log(atTheOldToad.removePotion("Speed potion"));
+console.log(atTheOldToad.updatePotionName("Dragon breath", "Polymorth"));
+console.log(atTheOldToad.updatePotionName("Stone skin", "Invulnerability potion"));
+console.log(atTheOldToad.getPotions());
+/**
+ * Вызов метода atTheOldToad.getPotions() для исходного объекта возвращает [ { name: "Speed potion", price: 460 }, { name: "Dragon breath", price: 780 }, { name: "Stone skin", price: 520 } ]
+Значение свойства atTheOldToad.addPotion это метод объекта.
+
+Для исходного объекта после вызова метода atTheOldToad.addPotion({ name: "Invisibility", price: 620 }), в массиве potions последним элементом будет этот объект
+
+Для исходного объекта после вызова метода atTheOldToad.addPotion({ name: "Power potion", price: 270 }), в массиве potions последним элементом будет этот объект
+
+Если добавляемое зелье уже есть в массиве potions, метод addPotion возвращает строку с текстом из исходного кода
+Если добавляемое зелье уже есть в массиве potions, метод addPotion не добавляет в него передаваемый обьект
+Для исходного объекта после вызова atTheOldToad.addPotion({ name: "Dragon breath", price: 700 }), массив potions не изменяется
+Для исходного объекта после вызова atTheOldToad.addPotion({ name: "Stone skin", price: 240 }), массив potions не изменяется
+Для исходного объекта вызов atTheOldToad.addPotion({ name: "Dragon breath", price: 700 }), возвращает строку "Error! Potion Dragon breath is already in your inventory!"
+Для исходного объекта вызов atTheOldToad.addPotion({ name: "Stone skin", price: 240 }), возвращает строку "Error! Potion Stone skin is already in your inventory!"
+Значение свойства atTheOldToad.removePotion это метод объекта
+Для исходного объекта после вызова метода atTheOldToad.removePotion("Dragon breath"), в свойстве potions будет массив [ { name: "Speed potion", price: 460 }, { name: "Stone skin", price: 520 } ]
+Для исходного объекта после вызова метода atTheOldToad.removePotion("Speed potion"), в свойстве potions будет массив [ { name: "Dragon breath", price: 780 }, { name: "Stone skin", price: 520 }]
+Значение свойства atTheOldToad.updatePotionName это метод объекта
+Для исходного объекта после вызова метода atTheOldToad.updatePotionName("Dragon breath", "Polymorth"), в свойстве potions будет массив [{ name: "Speed potion", price: 460 }, { name: "Polymorth", price: 780 }, { name: "Stone skin", price: 520 } ]
+Для исходного объекта после вызова метода atTheOldToad.updatePotionName("Stone skin", "Invulnerability potion"), в свойстве potions будет массив [{ name: "Speed potion", price: 460 }, { name: "Dragon breath", price: 780 }, { name: "Invulnerability potion", price: 520 } ]
+ */
