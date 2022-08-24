@@ -620,18 +620,20 @@ const account = {
      * Вызывает createTransaction для создания объекта транзакции после чего добавляет его в историю транзакции
      */
     deposit(amount) {
-        // return (this.balance += amount);
         this.balance += amount;
-
         const newTransaction = this.createTransaction(
             amount,
             Transaction.DEPOSIT,
         );
-
         this.transaction.push(newTransaction);
-
         return `Пополнение прошло успешно на ${amount}, общая сумма ${this.balance} `;
     },
+
+    // this.balance += amount;
+
+    // let pushDepositTransaction = this.transaction.push(
+    //     this.createTransaction(amount, Transaction.DEPOSIT),
+    // );
 
     /**
      * Метод отвечающий за снятие суммы с баланса.

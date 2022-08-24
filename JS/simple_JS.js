@@ -188,3 +188,117 @@ console.table(userInfo.address.city);
 // if (userInfo.age) {
 //     console.log(userInfo.age);
 // }
+
+// Поиск самого большого числа, сначала распыляем, потому что Math.max ищет не среди массива, а среди произвольного количества аргументов
+const temps = [12, 32, 45, 1, 2];
+
+const maxTemps = Math.max(...temps);
+
+console.log(maxTemps);
+// создание нового массива, точная и независимая копия
+const copyOfTemps = [...temps];
+console.log(copyOfTemps);
+// Распыление разных массивов в 1
+const firstArr = [12, 2, 3, 4, 5];
+const secondArr = [5, 4, 3, 2, 1];
+
+const finalTemps = [...firstArr, ...secondArr];
+console.log(finalTemps);
+// создание нового объекта, методом распыления других объектов
+
+const firstObj = { propA: 1, propB: 2 };
+const secondObj = { propC: 10, propD: 15, propB: 50 };
+
+const thirdObj = { propE: 232, ...firstObj, ...secondObj };
+console.log(thirdObj);
+
+//Destructuring объектов, с присвоением несуществующих переменных и переименованием переменных
+// const book = {
+//     title: 'The last Kingdom',
+//     author: 'Bernard',
+//     genres: ['historical prose', 'adventure'],
+//     isPublic: true,
+//     rating: 3.58,
+// };
+
+// const {
+//     title: bookName,
+//     genres,
+//     isPublic,
+//     rating,
+//     email = 'book@gmail.com',
+// } = book;
+// console.log(
+//     `Книга ${bookName} c рейтингом ${rating}, жанры ${genres}, присылайте свои отзывы на почту  ${email}`,
+// );
+// Destructuring in cycle
+
+// const books = [
+//     {
+//         title: 'The last Kingdom',
+//         author: 'Bernard',
+//         rating: 3.58,
+//     },
+//     {
+//         title: 'На берегу спокойных вод',
+//         author: 'Роберт',
+//         rating: 8.51,
+//     },
+// ];
+
+// for (const book of books) {
+//     const { title, author, rating } = book;
+
+//     console.log(title);
+// }
+
+// for (const { title, author, rating } of books) {
+//     console.log(author);
+// }
+
+// const rgb = [200, 250, 100];
+// const [red, green, blue] = rgb;
+// console.log(red);
+
+// const [red, ...other] = rgb;
+// console.log(other);
+
+// const [, , blue] = rgb;
+// console.log(blue);
+// ------------------------------
+// const apartment = {
+//     descr: 'Spacious apartment in the city center',
+//     rating: 4,
+//     price: 2153,
+// };
+// const keys = [];
+// const values = [];
+// // Change code below this line
+// //Перебери объект apartment используя цикл for...in и запиши в массив keys все его ключи, а в массив values все значения его свойств.
+
+// for (const key in apartment) {
+//     keys.push(key);
+//     values.push(apartment[key]);
+// }
+// console.log(keys);
+// console.log(values);
+// -------------------
+//Выполни рефакторинг решения предыдущего задания добавив в цикл for...in проверку на собственное свойство.
+const keys = [];
+const values = [];
+const advert = {
+    service: 'apt',
+};
+const apartment = Object.create(advert);
+apartment.descr = 'Spacious apartment in the city center';
+apartment.rating = 4;
+apartment.price = 2153;
+
+for (const key in apartment) {
+    // Change code below this line
+
+    keys.push(key);
+    values.push(apartment[key]);
+
+    // Change code above this line
+}
