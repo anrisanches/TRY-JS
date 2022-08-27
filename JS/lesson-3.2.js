@@ -195,117 +195,117 @@
 
 // ---practice---
 
-const cart = {
-    items: [],
-    getItems() {
-        return this.items;
-    },
-    add(product) {
-        // console.table(this.items);
-        // добавляем распыление ждя того что бы было продуктов одинаковых больше 1, создаем новую переменную в которую добавляем новый объект quantity но перед этим  распиливаем оригинальный продукт в который мы передали (name, price)  и уже новый объект запушили в корзину
+// const cart = {
+//     items: [],
+//     getItems() {
+//         return this.items;
+//     },
+//     add(product) {
+// console.table(this.items);
+// добавляем распыление ждя того что бы было продуктов одинаковых больше 1, создаем новую переменную в которую добавляем новый объект quantity но перед этим  распиливаем оригинальный продукт в который мы передали (name, price)  и уже новый объект запушили в корзину
 
-        // const newProduct = {
-        //     ...product,
-        //     quantity: 1,
-        // };
+// const newProduct = {
+//     ...product,
+//     quantity: 1,
+// };
 
-        //  теперь нужно проверить перед добавлением есть ли такой продукт в корзине и если есть, то изменить quantity
-        // this.items.push(newProduct);
+//  теперь нужно проверить перед добавлением есть ли такой продукт в корзине и если есть, то изменить quantity
+// this.items.push(newProduct);
 
-        // --- по результату перебора, если такой продукт уже есть, то увеличивается quantity количество на 1 и выходит с данного цикла к следующему не перебирая весь массив
-        for (const item of this.items) {
-            if (item.name === product.name) {
-                // console.log(item);
-                item.quantity += 1;
-                return;
-            }
-        }
+// --- по результату перебора, если такой продукт уже есть, то увеличивается quantity количество на 1 и выходит с данного цикла к следующему не перебирая весь массив
+//     for (const item of this.items) {
+//         if (item.name === product.name) {
+//             // console.log(item);
+//             item.quantity += 1;
+//             return;
+//         }
+//     }
 
-        const newProduct = {
-            ...product,
-            quantity: 1,
-        };
-        this.items.push(newProduct);
-    },
+//     const newProduct = {
+//         ...product,
+//         quantity: 1,
+//     };
+//     this.items.push(newProduct);
+// },
 
-    remove(productName) {
-        // ---- destruction this   =   {items} - сразу будет выводить нам массив, так как он является значением свойства items
+// remove(productName) {
+// ---- destruction this   =   {items} - сразу будет выводить нам массив, так как он является значением свойства items
 
-        const { items } = this;
+// const { items } = this;
 
-        //----- for (const item of this.items) - пока что не подходит потому что нам нужно удалить методом splice в котором нам нужен индекс поэтому for  с итерацией [i]
-        for (let i = 0; i < items.length; i += 1) {
-            // console.log(item);
+//----- for (const item of this.items) - пока что не подходит потому что нам нужно удалить методом splice в котором нам нужен индекс поэтому for  с итерацией [i]
+// for (let i = 0; i < items.length; i += 1) {
+// console.log(item);
 
-            //----- для простоты чтения, лучше сделать локальную переменную const item = this.items[i].name
-            // console.log(this.items[i]);
+//----- для простоты чтения, лучше сделать локальную переменную const item = this.items[i].name
+// console.log(this.items[i]);
 
-            // if (productName === this.items[i].name) {
-            //     console.log('Нашли такой продукт', productName);
-            // }
+// if (productName === this.items[i].name) {
+//     console.log('Нашли такой продукт', productName);
+// }
 
-            //----- здесь мы после локальной переменной можем сделать destruction для item-так как она является объектом из массива items который мы перебрали
+//----- здесь мы после локальной переменной можем сделать destruction для item-так как она является объектом из массива items который мы перебрали
 
-            // const item = this.items[i];
-            // if (productName === item.name) {
-            //     console.log('Нашли такой продукт', productName);
-            // }
+// const item = this.items[i];
+// if (productName === item.name) {
+//     console.log('Нашли такой продукт', productName);
+// }
 
-            //---- const { name } = this.items[i]; - после destruction const {items} = this -- везде заменяем this.items на items
+//---- const { name } = this.items[i]; - после destruction const {items} = this -- везде заменяем this.items на items
 
-            const { name } = items[i];
+// const { name } = items[i];
 
-            // console.log(name);
-            if (productName === name) {
-                console.log('Нашли такой продукт', productName);
-                console.log(`Индекс продукта что удаляем ${productName} :`, i);
-                items.splice(i, 1);
-            }
-        }
-    },
-    clear() {
-        this.items = [];
-    },
-    countTotalPrice() {
-        // let total = 0;
-        // for (const item of this.items) {
-        //     // console.log(item);
-        //     total += item.price;
-        // }
-        // return total; --- делаем destruction
+// console.log(name);
+//         if (productName === name) {
+//             console.log('Нашли такой продукт', productName);
+//             console.log(`Индекс продукта что удаляем ${productName} :`, i);
+//             items.splice(i, 1);
+//         }
+//     }
+// },
+// clear() {
+//     this.items = [];
+// },
+// countTotalPrice() {
+// let total = 0;
+// for (const item of this.items) {
+//     // console.log(item);
+//     total += item.price;
+// }
+// return total; --- делаем destruction
 
-        const { items } = this;
-        let total = 0;
+//         const { items } = this;
+//         let total = 0;
 
-        for (const { price, quantity } of items) {
-            total += price * quantity;
-        }
-        return total;
-    },
-    increaseQuantity(productName) {},
-    decreaseQuantity(productName) {},
-};
+//         for (const { price, quantity } of items) {
+//             total += price * quantity;
+//         }
+//         return total;
+//     },
+//     increaseQuantity(productName) {},
+//     decreaseQuantity(productName) {},
+// };
 
-cart.add({ name: 'apple', price: 50 });
-cart.add({ name: 'lemon', price: 60 });
-cart.add({ name: 'lemon', price: 60 });
-cart.add({ name: 'orange', price: 70 });
-cart.add({ name: 'cherry', price: 110 });
-cart.add({ name: 'cherry', price: 110 });
-cart.add({ name: 'cherry', price: 110 });
+// cart.add({ name: 'apple', price: 50 });
+// cart.add({ name: 'lemon', price: 60 });
+// cart.add({ name: 'lemon', price: 60 });
+// cart.add({ name: 'orange', price: 70 });
+// cart.add({ name: 'cherry', price: 110 });
+// cart.add({ name: 'cherry', price: 110 });
+// cart.add({ name: 'cherry', price: 110 });
+
+// // console.table(cart.getItems());
 
 // console.table(cart.getItems());
 
-console.table(cart.getItems());
+// console.log('Total:', cart.countTotalPrice());
 
-console.log('Total:', cart.countTotalPrice());
+// cart.remove('apple');
 
-cart.remove('apple');
+// console.table(cart.getItems());
 
-console.table(cart.getItems());
-
-cart.clear();
-console.log(cart.getItems());
+// cart.clear();
+// console.log(cart.getItems());
 
 // console.log(apartment.location);
 // console.log(apartment);
@@ -499,3 +499,287 @@ console.log(cart.getItems());
 // const showProfileInfo = function (userProfile) {
 //     console.log(userProfile);
 // };
+/**
+ * Операция spread (распыление)
+ * -Array.prototype.concat() и аналог через spread
+ */
+
+//Поиск самой маленькой и большой температуры (чисел)
+
+// const temps = [12, 34, 5, 32, 1, 38, 6];
+
+// console.log(Math.max(...temps));
+
+/**
+ * Сшиваем несколько массивов в один через concat() и spread
+ */
+
+// const lastWeekTemps = [1, 2, 3];
+// const currentTemps = [4, 5, 6];
+// const nextWeekTemps = [7, 8, 9];
+
+// const allTemps = [];
+
+// const allTempsConcat = lastWeekTemps.concat(currentTemps, nextWeekTemps);
+// allTemps.push(...lastWeekTemps, ...currentTemps, ...nextWeekTemps);
+
+// console.log(allTemps);
+// console.log(allTempsConcat);
+
+/**
+ * Распыление объектов
+ * Object.prototype.assign() and spread
+ */
+
+// const a = { x: 1, y: 2 };
+// const b = { x: 0, z: 10 };
+
+// const c = Object.assign({}, a, b);
+// console.log(c);
+
+// const ollObj = { ...a, ...b };
+// console.log(ollObj);
+
+/*
+ *
+ */
+
+// const playlist = {
+//     name: 'you',
+//     rating: 5,
+//     tracks: ['track-1', 'track-2'],
+//     trackCount: 2,
+// };
+
+// const { name, rating: ratingTracks, tracks, ...restProps } = playlist;
+// // console.log(rating);
+// console.log(name, ratingTracks, tracks);
+// console.log(restProps );
+// console.log(playlist.rating);
+
+//
+// const[ ] = [1,2,3]
+// console.log(([] = [1, 2, 3]));
+//
+
+// const rbg = [255, 155, 344];
+// const [red, green, blue, alfa = 0.3] = rbg;
+
+// console.log(red, alfa);
+
+/**
+ *
+ *
+ * Destructing array
+ *
+ *
+ *
+ */
+
+// const author = {
+//     kiwi: 4,
+//     mango: 5,
+//     polly: 12,
+//     ajax: 10,
+// };
+
+// const entries = Object.entries(author);
+// console.table(entries);
+
+// for (const [name, rating] of entries) {
+//     // console.log(entry);
+// //ур 1
+
+//     // const name = entry[0];
+//     // const rating = entry[1];
+//     // console.log(name, rating);
+
+// //ур2
+//     // const [name, rating] = entry;
+//     console.log(name, rating);
+// }
+
+/**
+ * Паттерн объект настроек - применяется когда у fn з и больше аргументов
+ */
+
+// const profiles = {
+//     name: 'Jack',
+//     tag: 'luke',
+//     location: 'Jamaica',
+//     avatar: 'https//s3.amazon',
+//     stats: {
+//         followers: 1352,
+//         views: 2341,
+//         likes: 3131,
+//     },
+// };
+
+// function showProfileInfo(userProfile) {
+//     // console.log(userProfile);
+//     const {
+//         name,
+//         tag,
+//         location,
+//         avatar,
+//         stats: { followers, views, likes },
+//     } = userProfile;
+//     console.log(name);
+// }
+
+// showProfileInfo(profiles);
+
+/**
+ * Работаем с коллекцией товаров в корзине:
+ * - getItems()
+ * - add(product)
+ * - remove(productName)
+ * - clear()
+ * - countTotalPrice()
+ * - increaseQuantity(productName)
+ * - decreaseQuantity(productName)
+ */
+
+const cart = {
+    items: [],
+    getItems() {
+        return this.items;
+    },
+    add(product) {
+        for (const item of this.items) {
+            const { name } = item;
+
+            if (name === product.name) {
+                // console.log(product);
+
+                console.log('Такой продукт уже есть: ', product.name);
+                item.quantity += 1;
+                return;
+            }
+        }
+        const newProduct = {
+            ...product,
+            quantity: 1,
+        };
+
+        this.items.push(newProduct);
+        // this.items.push(product);
+    },
+    remove(productName) {
+        // for (const item of this.items) {
+        //     // console.log(item);
+        //     if (item.name === productName) {
+        //         console.log(`Мы нашли такой продукт ${productName}`);
+        //         const indexRemoveItem = this.items.indexOf(item);
+        //         return this.items.splice(indexRemoveItem, 1);
+        //     }
+        // }
+
+        // for (let i = 0; i < this.items.length; i += 1) {
+        //     const item = this.items[i];
+        //     if (item.name === productName) {
+        //         console.log(`Мы нашли такой продукт ${productName}`);
+
+        //         return this.items.splice(item, 1);
+        //     }
+        // }
+
+        //COOL---------COOL-----------COLL
+
+        const { items } = this;
+        // console.log(items);
+        for (let i = 0; i < items.length; i += 1) {
+            // console.log(items[i]);
+
+            const { name } = items[i];
+            // console.log(items[i].name);
+            // console.log(name);
+            if (name === productName) {
+                console.log(`Мы нашли такой продукт ${productName}`);
+                console.log('Индекс: ', i);
+                return items.splice(i, 1);
+            }
+        }
+
+        //-------COOL-------COOL-----------COOL--------
+    },
+    clear() {
+        this.items = [];
+    },
+    countTotalPrice() {
+        const { items } = this;
+
+        let total = 0;
+
+        // for (const item of items)
+
+        for (const { price, quantity } of items) {
+            // const { price } = item;
+            // console.log(item)
+
+            total += price * quantity;
+        }
+        return total;
+    },
+    increaseQuantity(productName) {
+        //получает имя продукта, увеличивает quantity на 1, если такой продукт уже есть
+
+        const { items } = this;
+        for (let i = 0; i < items.length; i += 1) {
+            // console.log(items[i].name);
+            const { name } = items[i];
+
+            if (name === productName) {
+                items[i].quantity += 1;
+            }
+        }
+    },
+    decreaseQuantity(productName) {
+        //получает имя продукта, если есть то  уменьшает quantity на 1;
+        const { items } = this;
+
+        for (let i = 0; i < items.length; i++) {
+            const { name } = items[i];
+
+            if (name === productName && items[i].quantity > 1) {
+                items[i].quantity -= 1;
+            }
+        }
+    },
+};
+
+// console.table(cart.getItems());
+
+cart.add({ name: 'apple', price: 50 });
+cart.add({ name: 'apple', price: 50 });
+cart.add({ name: 'lemon', price: 60 });
+cart.add({ name: 'strawberry', price: 160 });
+cart.add({ name: 'strawberry', price: 160 });
+cart.add({ name: 'strawberry', price: 160 });
+cart.add({ name: 'orange', price: 50 });
+cart.add({ name: 'cherry', price: 250 });
+
+// console.table(cart.getItems());
+
+cart.remove('lemon');
+
+// console.table(cart.getItems());
+
+// cart.clear();
+// console.log(cart.getItems());
+
+cart.increaseQuantity('orange');
+cart.increaseQuantity('orange');
+cart.increaseQuantity('orange');
+cart.increaseQuantity('orange');
+
+console.log('Total: ', cart.countTotalPrice());
+
+cart.decreaseQuantity('orange');
+cart.decreaseQuantity('strawberry');
+cart.decreaseQuantity('strawberry');
+cart.decreaseQuantity('strawberry');
+cart.decreaseQuantity('strawberry');
+
+console.table(cart.getItems());
+console.log('Total: ', cart.countTotalPrice());
