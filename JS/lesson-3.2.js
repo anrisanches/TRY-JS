@@ -630,6 +630,25 @@
 // showProfileInfo(profiles);
 
 /**
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  * Работаем с коллекцией товаров в корзине:
  * - getItems()
  * - add(product)
@@ -640,146 +659,305 @@
  * - decreaseQuantity(productName)
  */
 
-const cart = {
-    items: [],
-    getItems() {
-        return this.items;
-    },
-    add(product) {
-        for (const item of this.items) {
-            const { name } = item;
+// const cart = {
+//     items: [],
+//     getItems() {
+//         return this.items;
+//     },
+//     add(product) {
+//         for (const item of this.items) {
+//             const { name } = item;
 
-            if (name === product.name) {
-                // console.log(product);
+//             if (name === product.name) {
+//                 // console.log(product);
 
-                console.log('Такой продукт уже есть: ', product.name);
-                item.quantity += 1;
-                return;
-            }
-        }
-        const newProduct = {
-            ...product,
-            quantity: 1,
-        };
+//                 console.log('Такой продукт уже есть: ', product.name);
+//                 item.quantity += 1;
+//                 return;
+//             }
+//         }
+//         const newProduct = {
+//             ...product,
+//             quantity: 1,
+//         };
 
-        this.items.push(newProduct);
-        // this.items.push(product);
-    },
-    remove(productName) {
-        // for (const item of this.items) {
-        //     // console.log(item);
-        //     if (item.name === productName) {
-        //         console.log(`Мы нашли такой продукт ${productName}`);
-        //         const indexRemoveItem = this.items.indexOf(item);
-        //         return this.items.splice(indexRemoveItem, 1);
-        //     }
-        // }
+//         this.items.push(newProduct);
+//         // this.items.push(product);
+//     },
+//     remove(productName) {
+//         // for (const item of this.items) {
+//         //     // console.log(item);
+//         //     if (item.name === productName) {
+//         //         console.log(`Мы нашли такой продукт ${productName}`);
+//         //         const indexRemoveItem = this.items.indexOf(item);
+//         //         return this.items.splice(indexRemoveItem, 1);
+//         //     }
+//         // }
 
-        // for (let i = 0; i < this.items.length; i += 1) {
-        //     const item = this.items[i];
-        //     if (item.name === productName) {
-        //         console.log(`Мы нашли такой продукт ${productName}`);
+//         // for (let i = 0; i < this.items.length; i += 1) {
+//         //     const item = this.items[i];
+//         //     if (item.name === productName) {
+//         //         console.log(`Мы нашли такой продукт ${productName}`);
 
-        //         return this.items.splice(item, 1);
-        //     }
-        // }
+//         //         return this.items.splice(item, 1);
+//         //     }
+//         // }
 
-        //COOL---------COOL-----------COLL
+//         //COOL---------COOL-----------COLL
 
-        const { items } = this;
-        // console.log(items);
-        for (let i = 0; i < items.length; i += 1) {
-            // console.log(items[i]);
+//         const { items } = this;
+//         // console.log(items);
+//         for (let i = 0; i < items.length; i += 1) {
+//             // console.log(items[i]);
 
-            const { name } = items[i];
-            // console.log(items[i].name);
-            // console.log(name);
-            if (name === productName) {
-                console.log(`Мы нашли такой продукт ${productName}`);
-                console.log('Индекс: ', i);
-                return items.splice(i, 1);
-            }
-        }
+//             const { name } = items[i];
+//             // console.log(items[i].name);
+//             // console.log(name);
+//             if (name === productName) {
+//                 console.log(`Мы нашли такой продукт ${productName}`);
+//                 console.log('Индекс: ', i);
+//                 return items.splice(i, 1);
+//             }
+//         }
 
-        //-------COOL-------COOL-----------COOL--------
-    },
-    clear() {
-        this.items = [];
-    },
-    countTotalPrice() {
-        const { items } = this;
+//         //-------COOL-------COOL-----------COOL--------
+//     },
+//     clear() {
+//         this.items = [];
+//     },
+//     countTotalPrice() {
+//         const { items } = this;
 
-        let total = 0;
+//         let total = 0;
 
-        // for (const item of items)
+//         // for (const item of items)
 
-        for (const { price, quantity } of items) {
-            // const { price } = item;
-            // console.log(item)
+//         for (const { price, quantity } of items) {
+//             // const { price } = item;
+//             // console.log(item)
 
-            total += price * quantity;
-        }
-        return total;
-    },
-    increaseQuantity(productName) {
-        //получает имя продукта, увеличивает quantity на 1, если такой продукт уже есть
+//             total += price * quantity;
+//         }
+//         return total;
+//     },
+//     increaseQuantity(productName) {
+//         //получает имя продукта, увеличивает quantity на 1, если такой продукт уже есть
 
-        const { items } = this;
-        for (let i = 0; i < items.length; i += 1) {
-            // console.log(items[i].name);
-            const { name } = items[i];
+//         const { items } = this;
+//         for (let i = 0; i < items.length; i += 1) {
+//             // console.log(items[i].name);
+//             const { name } = items[i];
 
-            if (name === productName) {
-                items[i].quantity += 1;
-            }
-        }
-    },
-    decreaseQuantity(productName) {
-        //получает имя продукта, если есть то  уменьшает quantity на 1;
-        const { items } = this;
+//             if (name === productName) {
+//                 items[i].quantity += 1;
+//             }
+//         }
+//     },
+//     decreaseQuantity(productName) {
+//         //получает имя продукта, если есть то  уменьшает quantity на 1;
+//         const { items } = this;
 
-        for (let i = 0; i < items.length; i++) {
-            const { name } = items[i];
+//         for (let i = 0; i < items.length; i++) {
+//             const { name } = items[i];
 
-            if (name === productName && items[i].quantity > 1) {
-                items[i].quantity -= 1;
-            }
-        }
-    },
-};
+//             if (name === productName && items[i].quantity > 1) {
+//                 items[i].quantity -= 1;
+//             }
+//         }
+//     },
+// };
+
+// // console.table(cart.getItems());
+
+// cart.add({ name: 'apple', price: 50 });
+// cart.add({ name: 'apple', price: 50 });
+// cart.add({ name: 'lemon', price: 60 });
+// cart.add({ name: 'strawberry', price: 160 });
+// cart.add({ name: 'strawberry', price: 160 });
+// cart.add({ name: 'strawberry', price: 160 });
+// cart.add({ name: 'orange', price: 50 });
+// cart.add({ name: 'cherry', price: 250 });
+
+// // console.table(cart.getItems());
+
+// cart.remove('lemon');
+
+// // console.table(cart.getItems());
+
+// // cart.clear();
+// // console.log(cart.getItems());
+
+// cart.increaseQuantity('orange');
+// cart.increaseQuantity('orange');
+// cart.increaseQuantity('orange');
+// cart.increaseQuantity('orange');
+
+// console.log('Total: ', cart.countTotalPrice());
+
+// cart.decreaseQuantity('orange');
+// cart.decreaseQuantity('strawberry');
+// cart.decreaseQuantity('strawberry');
+// cart.decreaseQuantity('strawberry');
+// cart.decreaseQuantity('strawberry');
 
 // console.table(cart.getItems());
+// console.log('Total: ', cart.countTotalPrice());
 
-cart.add({ name: 'apple', price: 50 });
-cart.add({ name: 'apple', price: 50 });
-cart.add({ name: 'lemon', price: 60 });
-cart.add({ name: 'strawberry', price: 160 });
-cart.add({ name: 'strawberry', price: 160 });
-cart.add({ name: 'strawberry', price: 160 });
-cart.add({ name: 'orange', price: 50 });
-cart.add({ name: 'cherry', price: 250 });
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ * Перепиши функцию так, чтобы она принимала один объект параметров, вместо набора независимых аргументов
+ */
 
-// console.table(cart.getItems());
+// function calcBMI({weight,height}) {
+//     // const {weight,height} = params - сделали destruction в параметрах функции
+//     const numberWeight = Number(weight.replace(',', '.'));
+//     const numberHeight = Number(height.replace(',', '.'));
+//     return Number((numberWeight / numberHeight ** 2).toFixed(1));
+// }
 
-cart.remove('lemon');
+// /**
+//  * Было
+//  * console.log(calcBMI('88,3','1,75'));
+//  * console.log(calcBMI('68,2','1.64'));
+//  * console.log(calcBMI('118,3','1.95'));
+//  */
 
-// console.table(cart.getItems());
+// //Ожидается
+// console.log(calcBMI({weight:'88,3', height:'1,75',}))
+// console.log(calcBMI({weight:'68,2', height:'1.64',}))
+// console.log(calcBMI({weight:'118,3', height:'1.95',}))
 
-// cart.clear();
-// console.log(cart.getItems());
+/**
+ * Перепиши функцию так, чтобы она принимала один объект параметров, вместо набора независимых аргументов
+ */
 
-cart.increaseQuantity('orange');
-cart.increaseQuantity('orange');
-cart.increaseQuantity('orange');
-cart.increaseQuantity('orange');
+// function printContactsInfo ({names,phones}) {
+//     const nameList = names.split(',');
+//     const phoneList = phones.split(',');
 
-console.log('Total: ', cart.countTotalPrice());
+//     for (let i = 0; i < nameList.length; i+=1) {
+//         console.log(`${nameList[i]}: ${phoneList[i]}`);
+//     }
+// };
 
-cart.decreaseQuantity('orange');
-cart.decreaseQuantity('strawberry');
-cart.decreaseQuantity('strawberry');
-cart.decreaseQuantity('strawberry');
-cart.decreaseQuantity('strawberry');
+// //Было
 
-console.table(cart.getItems());
-console.log('Total: ', cart.countTotalPrice());
+// // printContactsInfo(
+// //     'Jacob,Mango',
+// //     '8097,8050',
+// // );
+
+// //Ожидается
+
+// printContactsInfo({
+//     names:'Jacob,Mango',
+//     phones:'8097,8050',
+// });
+
+/**
+ * Перепиши функцию так чтобы она принимала один объект параметров, вместо набора независимых аргументов
+ */
+
+// function getBotReport(params) {
+//     const {
+//         companyName,
+//         bots: { repair: repairBots, defense: defenseBots },
+//     } = params;
+
+//     return `${companyName} has ${repairBots + defenseBots} bots in stock`;
+// }
+
+// //It was
+// // console.log(getBotReport('Cyber system', 150,50));
+
+// //Expected
+// console.log(
+//     getBotReport({
+//         companyName: 'Cyber system',
+//         bots: {
+//             repair: 150,
+//             defense: 50,
+//         },
+//     }),
+// );
+
+/**
+ * Дополни функцию createContacts(partialContact) так, что бы она возвращала новый объект контакта с добавлением свойства id и createdAt, а также list со значением 'default' если в partialContact нет такого свойства
+ */
+
+// function createdContacts(params) {
+//     // const { name, email, list = 'default' } = params;
+
+//     // const newObj = { name, email, list, id: generateId() };
+
+//     // return newObj;
+
+//     return {
+//         list: 'default',
+//         ...params,
+//         id: generateId(),
+//         createAt: Date.now(),
+//     };
+// }
+
+// console.table(
+//     createdContacts({
+//         name: 'Mango',
+//         email: '@gmail.com',
+//         list: 'friend',
+//     }),
+// );
+
+// function generateId() {
+//     return '_' + Math.random().toString(36).substr(2, 9);
+// }
+
+/**
+ *
+ *
+ *
+ * Напиши функцию transformUserName(user) так, чтобы она возвращала новый объект со свойством fullName, вместо firstName и lastName
+ *
+ *
+ *
+ */
+
+function transformUserName(user) {
+    const { firstName, lastName, ...otherProps } = user;
+    return {
+        fullName: `${firstName + ' ' + lastName}`,
+        ...otherProps,
+        //при распылении ...otherProps в них не будут входить firstName and lastName
+    };
+}
+
+console.log(
+    transformUserName({
+        id: 1,
+        firstName: 'Jacob',
+        lastName: 'Mer',
+        email: '@gmail.com',
+        friendCount: 40,
+    }),
+);
