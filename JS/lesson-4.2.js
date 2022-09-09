@@ -132,7 +132,7 @@
 //     console.log('message: ',message);
 // };
 
-// fnA('sadadasdas')
+// fnA('sa')
 
 // -----------------------------------------
 
@@ -151,21 +151,20 @@
 
 // function arraySort (array){
 //     const newArrayString = [];
-//     const newArrayNumber = [];  
+//     const newArrayNumber = [];
 //     array.forEach(element => {
 //         if(typeof element === 'number'){
 //             newArrayNumber.push(element)
 //         }else{
 //             newArrayString.push(element)
-//         }  
+//         }
 //     });
 
 //     // return array.sort((a,b)=>a-b)
-//     newArrayNumber.sort((a,b)=> a-b)    
-    
+//     newArrayNumber.sort((a,b)=> a-b)
+
 //     newArrayString.sort((a,b) =>a.localeCompare(b))
 
-    
 //     console.log(newArrayString);
 //     console.log(newArrayNumber);
 //     return [...newArrayString,...newArrayNumber];
@@ -181,8 +180,6 @@
 // example([14, 32, 3, 5, 5]) = > [3, 5, 5, 14, 32]
 // example([1, 2, 3, 4, 5]) = > [1, 2, 3, 4, 5]
 // example(['Banana', 'Orange', 'Apple', 'Mango', 0, 2, 2]) = > [0, 2, 2, 'Apple', 'Banana', 'Mango', 'Orange']
-
-
 
 // ------------------------------------------------------------
 // const arr = [
@@ -201,3 +198,230 @@
 // arraySum([[1, 2, [3, 4]], [9], [10, 12]])
 // ------------------------------------------
 
+const players = [
+    {
+        id: 'player-1',
+        name: 'Mango',
+        timePlayed: 310,
+        points: 54,
+        online: false,
+    },
+    { id: 'player-2', name: 'Poly', timePlayed: 470, points: 92, online: true },
+
+    { id: 'player-3', name: 'Kiwi', timePlayed: 230, points: 48, online: true },
+
+    {
+        id: 'player-4',
+        name: 'Ajax',
+        timePlayed: 150,
+        points: 71,
+        online: false,
+    },
+    { id: 'player-5', name: 'Alan', timePlayed: 80, points: 48, online: true },
+];
+
+// const arrName = players.map(({name,id}, index, array) => {
+//     return `${index+1}: ${name} - ${id}`
+// });
+// console.log(arrName);
+
+// const totalTimePlayer = array => {
+//     return array.reduce((total, { timePlayed }) => {
+//         return total + timePlayed;
+//     }, 0);
+// };
+
+// console.log(totalTimePlayer(players));
+
+// function changeEven(numbers, value) {
+//     const newAr = numbers.map((number, index) => {
+//         if (number % 2 === 0) {
+//             number += value;
+//         }
+//         return number
+//     });
+//     return newAr;
+// }
+
+// console.log(changeEven([17, 24, 68, 31, 42], 100));
+
+/*
+ * {
+        id: 'player-4',
+        name: 'Ajax',
+        timePlayed: 150,
+        points: 71,
+        online: false,
+    }
+ */
+
+// const arrNamePoint = players.map(({ name, points }) => ({
+//     name,
+//     points: (points * 0.1).toFixed(2),
+// }));
+
+// console.table(arrNamePoint);
+
+// const updatedPlayers = players.map(player => ({
+//     ...player,
+//     points: (player.points * 1.1).toFixed(2),
+// }));
+
+// console.table(updatedPlayers);
+
+const playerIdToUpdate = 'player-3';
+
+const updatedPlayersId = players.map(player =>
+    player.id === playerIdToUpdate
+        ? { ...player, timePlayed: player.timePlayed + 50000 }
+        : player,
+);
+//---------first variant------
+// if (player.id === playerIdToUpdate) {
+//     return {...player, timePlayed: player.timePlayed + 50000};
+// };
+// return player
+
+//---------second variant------
+// return player.id === playerIdToUpdate
+//     ? { ...player, timePlayed: player.timePlayed + 50000 }
+//     : player;
+
+// console.table(updatedPlayersId);
+
+//------find()---------------
+
+const playerIdToFind = 'player-2';
+
+// const playerWithId = players.find(player => player.id === playerIdToFind);
+
+// console.log(playerWithId);
+
+// const findPlayerById = (allPlayer, playerId) =>
+//     allPlayer.find(({ id }) => id === playerId);
+
+// console.log(findPlayerById(players, playerIdToFind));
+// console.log(findPlayerById(players, 'player-3'));
+
+// const playerNameToFind = 'Ajax';
+
+// const playerWithName = players.find(({name})=> name === playerNameToFind);
+
+// console.log(playerWithName);
+
+//-----Array.prototype.every()-----true-если все подходят
+//-----Array.prototype.some()------true-если хотя бы один
+
+// const isAllOnline = players.every(player=>player.online);
+// console.log(isAllOnline);
+
+// const isAllPlayersOnline = players.some(player=>player.online);
+// console.log(isAllPlayersOnline);
+
+//-----------reduce()---------
+//Поэлементно перебирает оригинальный массив
+//Возвращает что угодно
+//Заменяет все на свете но исп нужно с умом
+
+// const numbers = [1, 2, 3, 4, 56, 78, 342];
+
+// const total1 = numbers.reduce((acc,number)=>{
+//     console.log('number', number);
+//     console.log('acc:', acc);
+//     return 5},0);
+// console.log(total1);
+
+// const total = numbers.reduce((totalNumber, number) => totalNumber + number, 0);
+
+// console.log(total);
+
+// const salary = {
+//     mango: 100,
+//     poly: 50,
+//     ajax: 120,
+// };
+
+// const totalSalary = Object.values(salary).reduce(
+//     (total, value) => total + value,
+//     0,
+// );
+// console.log(totalSalary);
+
+// const totalTime = array =>
+//     array.reduce((totalTime, { timePlayed }) => totalTime + timePlayed, 0);
+
+// console.log(totalTime(players));
+
+/**
+ * Считаем общую сумму товаров корзины
+ */
+
+// const cart = [
+//     { label: 'Apples', price: 100, quantity: 2 },
+//     { label: 'Bananas', price: 300, quantity: 3 },
+//     { label: 'Lemons', price: 150, quantity: 4 },
+// ];
+
+// const totalAmount = cart.reduce(
+//     (total, { price, quantity }) => total + price * quantity,
+//     0,
+// );
+// console.log(totalAmount);
+
+const tweets = [
+    { id: '000', likes: 4, tags: ['js', 'nude.js'] },
+    { id: '001', likes: 7, tags: ['html', 'css'] },
+    { id: '002', likes: 2, tags: ['html', 'js', 'node.js'] },
+    { id: '003', likes: 0, tags: ['css', 'react'] },
+    { id: '004', likes: 12, tags: ['js', 'nude.js', 'react'] },
+];
+
+const allTags = array => {
+    const uniqueTags = array
+        .flatMap(obj => obj.tags)
+        .filter((element, index, array) => array.indexOf(element) === index);
+    console.log(uniqueTags);
+    // return array.reduce(
+    //     (ollCorses, { tags }) => ollCorses + tags),
+    //     [],
+    // );
+};
+
+// console.log(allTags(tweets));
+
+const allTags1 = tweets.reduce((accTags, tweet) => {
+    // accTags.push(...tweet.tags); - здесь мы мутируем массив по ссылке, поэтому нужно шаг 2
+    // return accTags;
+
+    // .filter((item, index, array) => array.indexOf(item) === index);
+    //---2---вернуть распыленный новый массив
+
+    return [...accTags, ...tweet.tags];
+}, []);
+
+// console.log(allTags1);
+
+//----снова изменение по ссылке
+// const tagsStats = allTags1.reduce((acc, tag) => {
+//     console.log(acc);
+
+//     if (acc[tag]) {
+//         acc[tag] += 1;
+
+//         return acc;
+//     }
+
+//     acc[tag] = 1;
+
+//     return acc;
+// }, {});
+//----снова изменение по ссылке
+
+const tagsStats = allTags1.reduce((acc, tag) => {
+    return {
+        ...acc,
+        [tag]: acc[tag] ? acc[tag] + 1 : 1,
+    };
+}, {});
+
+console.log(tagsStats);
