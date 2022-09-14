@@ -368,36 +368,36 @@ const playerIdToFind = 'player-2';
 // );
 // console.log(totalAmount);
 
-const tweets = [
-    { id: '000', likes: 4, tags: ['js', 'nude.js'] },
-    { id: '001', likes: 7, tags: ['html', 'css'] },
-    { id: '002', likes: 2, tags: ['html', 'js', 'node.js'] },
-    { id: '003', likes: 0, tags: ['css', 'react'] },
-    { id: '004', likes: 12, tags: ['js', 'nude.js', 'react'] },
-];
+// const tweets = [
+//     { id: '000', likes: 4, tags: ['js', 'nude.js'] },
+//     { id: '001', likes: 7, tags: ['html', 'css'] },
+//     { id: '002', likes: 2, tags: ['html', 'js', 'node.js'] },
+//     { id: '003', likes: 0, tags: ['css', 'react'] },
+//     { id: '004', likes: 12, tags: ['js', 'nude.js', 'react'] },
+// ];
 
-const allTags = array => {
-    const uniqueTags = array
-        .flatMap(obj => obj.tags)
-        .filter((element, index, array) => array.indexOf(element) === index);
-    console.log(uniqueTags);
-    // return array.reduce(
-    //     (ollCorses, { tags }) => ollCorses + tags),
-    //     [],
-    // );
-};
+// const allTags = array => {
+//     const uniqueTags = array
+//         .flatMap(obj => obj.tags)
+//         .filter((element, index, array) => array.indexOf(element) === index);
+//     console.log(uniqueTags);
+//     // return array.reduce(
+//     //     (ollCorses, { tags }) => ollCorses + tags),
+//     //     [],
+//     // );
+// };
 
 // console.log(allTags(tweets));
 
-const allTags1 = tweets.reduce((accTags, tweet) => {
-    // accTags.push(...tweet.tags); - здесь мы мутируем массив по ссылке, поэтому нужно шаг 2
-    // return accTags;
+// const allTags1 = tweets.reduce((accTags, tweet) => {
+//     // accTags.push(...tweet.tags); - здесь мы мутируем массив по ссылке, поэтому нужно шаг 2
+//     // return accTags;
 
-    // .filter((item, index, array) => array.indexOf(item) === index);
-    //---2---вернуть распыленный новый массив
+//     // .filter((item, index, array) => array.indexOf(item) === index);
+//     //---2---вернуть распыленный новый массив
 
-    return [...accTags, ...tweet.tags];
-}, []);
+//     return [...accTags, ...tweet.tags];
+// }, []);
 
 // console.log(allTags1);
 
@@ -417,11 +417,154 @@ const allTags1 = tweets.reduce((accTags, tweet) => {
 // }, {});
 //----снова изменение по ссылке
 
-const tagsStats = allTags1.reduce((acc, tag) => {
-    return {
-        ...acc,
-        [tag]: acc[tag] ? acc[tag] + 1 : 1,
-    };
-}, {});
+// const tagsStats = allTags1.reduce((acc, tag) => {
+//     return {
+//         ...acc,
+//         [tag]: acc[tag] ? acc[tag] + 1 : 1,
+//     };
+// }, {});
 
-console.log(tagsStats);
+// console.log(tagsStats);
+
+/**
+ * Array.prototype.sort(callback(currentEl, nextEl){})
+ * сортирует и ИЗМЕНЯЕТ оригинальный массив
+ * По умолчанию:
+ *  - сортирует по возрастанию
+ *  - приводит элементы к строке и сортирует по [unicode]
+ */
+
+/**
+ * Сортировка сложных типов
+ */
+
+//По игровому времени
+// const sortByBestPlayers = [...players].sort(
+//     (firstPlayer, nextPlayer) => nextPlayer.timePlayed - firstPlayer.timePlayed,
+// );
+// // console.table(sortByBestPlayers);
+
+// const byName = [...players].sort((a, b) => {
+//     console.log(a.name.charCodeAt(0));
+//     const result = a.name[0] > b.name[0];
+
+//     if (result) {
+//         return 1;
+//     }
+
+//     if (!result) {
+//         return -1;
+//     }
+// });
+
+// console.table(byName);
+
+/**
+ * Сортируем тех кто онлайн по рангу
+ */
+
+// const onlineAndSort = players
+//     .filter(({ online }) => online)
+//     .sort((a, b) => a.timePlayed - b.timePlayed);
+
+// console.table(onlineAndSort);
+
+const objName = {
+    name: 'Mango',
+    location: {
+        country: 'Ukraine',
+        city: 'Kiev',
+    },
+};
+
+console.log(objName?.location?.street);
+console.log(objName?.location?.country);
+
+const cars = [
+    {
+        make: 'Honda',
+        model: 'CR-V',
+        type: 'suv',
+        amount: 14,
+        price: 24045,
+        onSale: true,
+    },
+    {
+        make: 'Honda',
+        model: 'Accord',
+        type: 'sedan',
+        amount: 2,
+        price: 22345,
+        onSale: true,
+    },
+    {
+        make: 'Mazda',
+        model: 'Mazda-6',
+        type: 'sedan',
+        amount: 8,
+        price: 24195,
+        onSale: false,
+    },
+    {
+        make: 'Ford',
+        model: 'Explorer',
+        type: 'suv',
+        amount: 6,
+        price: 31223,
+        onSale: false,
+    },
+];
+
+// const getModel = arrayCars => arrayCars.map(car => car.model);
+const getModel = cars => cars.map(({ model }) => model);
+// console.log(getModel(cars));
+
+const makeCarsWithDiscount = (callback, discount) => {
+    const carsDiscount = callback.map(car => ({
+        ...car,
+        price: car.price - car.price * discount,
+        model: car.model + '+',
+        onSale: !car.onSale,
+    }));
+
+    return carsDiscount;
+};
+
+// console.log(makeCarsWithDiscount(cars, 0.2));
+// console.log(makeCarsWithDiscount(cars, 0.4));
+
+const filterByPrice = (cars, threshold) =>
+    cars.filter(car => car.price < threshold);
+
+const minPrice = cars.map(car => car.price);
+const findMin = cars.find(car => car.price === Math.min(...minPrice));
+
+const findMinPrice = (cars, callback) => {
+    const find = callback(cars, 30000).map(car => car.price);
+    const filter = Math.min(...find);
+    return cars.find(car => car.price === filter);
+};
+
+// console.log(findMinPrice(cars, filterByPrice));
+
+// console.log(findMin);
+
+// console.table(filterByPrice(cars, 30000));
+// console.table(filterByPrice(cars, 24000));
+
+const getCarsWithDiscount = cars => cars.filter(car => !car.onSale);
+
+// console.table(getCarsWithDiscount(cars));
+
+const getCarByModel = (cars, model) =>
+    cars.find(car => car.model.toUpperCase() === model.toUpperCase());
+
+// console.log(getCarByModel(cars, 'mazDa-6'));
+
+const sortByAscendingAmount = cars => {
+    return [...cars].sort((a, b) => a.amount - b.amount);
+};
+
+// console.table(sortByAscendingAmount(cars));
+
+console.table(cars);

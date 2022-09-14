@@ -857,4 +857,3 @@ const filter = function (array, test) {
 /**
  * use case по стрелкам...........все
  */
-
