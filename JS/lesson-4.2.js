@@ -567,4 +567,32 @@ const sortByAscendingAmount = cars => {
 
 // console.table(sortByAscendingAmount(cars));
 
+const sortByModel = (cars, order) =>
+    [...cars].sort((firstItem, nextItem) => {
+        if (order === 'asc') {
+            return firstItem.model.localeCompare(nextItem.model);
+        }
+
+        if (order === 'desc') {
+            return nextItem.model.localeCompare(firstItem.model);
+        }
+    });
+
+// console.table(sortByModel(cars, 'asc'));
+// console.table(sortByModel(cars, 'desc'));
+
+const getTotalAmount = cars => cars.reduce((acc, car) => acc + car.amount, 0);
+
+// console.log(getTotalAmount(cars));
+
+const getModelsOnSale = cars =>
+    cars.filter(car => car.onSale).map(car => car.model);
+
+// console.log(getModelsOnSale(cars));
+
+const getSortedCarsOnSale = cars =>
+    cars.filter(car => car.onSale).sort((a, b) => a.price - b.price);
+
+console.table(getSortedCarsOnSale(cars));
+
 console.table(cars);
