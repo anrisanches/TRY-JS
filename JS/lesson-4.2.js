@@ -593,6 +593,6 @@ const getModelsOnSale = cars =>
 const getSortedCarsOnSale = cars =>
     cars.filter(car => car.onSale).sort((a, b) => a.price - b.price);
 
-console.table(getSortedCarsOnSale(cars));
+// console.table(getSortedCarsOnSale(cars));
 
-console.table(cars);
+// console.table(cars);
