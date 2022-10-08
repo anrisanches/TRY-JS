@@ -857,3 +857,46 @@ const filter = function (array, test) {
 /**
  * use case по стрелкам...........все
  */
+
+const value = {
+    value: 'apple',
+};
+
+const animal = Object.create(value);
+
+animal.legs = 4;
+animal.age = 10;
+animal.isAggressive = true;
+
+// const animals = {
+//     legs: 4,
+//     age: 10,
+//     isAggressive: false,
+// };
+
+const dog = Object.create(animal);
+
+dog.name = 'Mango';
+dog.color = 'black';
+
+// console.log(dog.value);
+// console.log(dog);
+// const key = Object.keys(animal);
+
+// console.log(key);
+
+// console.log(animal.isPrototypeOf(dog));
+
+// console.log(dog.hasOwnProperty('color'));
+// console.log(dog.hasOwnProperty('leg'));
+console.log(dog.__proto__.__proto__);
+
+for (const key in dog) {
+    // console.log(key);
+    if (Object.hasOwnProperty.call(dog, key)) {
+        const element = dog[key];
+        console.log(element);
+    }
+}
+
+console.log(Object.keys(animal));

@@ -1,4 +1,32 @@
 'use strict';
+
+//1. У каждого объекта есть свойство __proto__
+//2. В этом свойстве лежит ссылка на его ПРОТОТИП, то есть другой объект
+//3. При создании литерала объекта, в свойство __proto__ записывается ссылка на function.prototype (на функция конструктор)
+//
+//
+//
+
+// const objA = {
+//     x: 5,
+// };
+
+// console.log(objA.__proto__ === Object.prototype);
+//
+//
+//
+
+//4. Функция конструктор это просто функция:) (все делает магия оператора new ).
+//5. Всю магию делает оператор new
+//6. !!!Если функция вызывается через (new), создается пустой объект(где-то в памяти)
+//7. Функция конструктора вызывается в контексте созданного объекта(её this ссылается на пустой объект).
+//8. (За нас под капотом) В свойство this.__proto__ записывается ссылка на объект (какое-то имя например) функция Car.prototype
+//  this = Object.create(User.prototype) - создается пустой объект с уже привязанным прототипом
+//9. Ссылка на объект возвращается на место new Функция () "Car"
+//
+//
+//
+
 // const denObj = Object.create({message: 'Это свойство объекта прототипа'});
 // denObj.message = 'это собственное свойство'
 // console.log(`denObj: `, denObj);
@@ -287,3 +315,178 @@ const changeHatColor = changeColor.bind(hat);
 // console.log(calculator.mul());
 
 // console.log(calculator);
+
+/**
+ * ----------------------------
+ * ----------------------------
+ * ----------------------------
+ * ----------------------------
+ * ----------------------------
+ * ----------------------------
+ * ----------------------------
+ * */
+
+// class User {
+//     constructor(name, email) {
+//         this.name = name;
+//         this.email = email;
+//     }
+// }
+
+// // console.log(User);
+// const mango = new User('Mango', 'Sancho');
+
+// // console.log(mango);
+// // console.log(mango.name, mango.email);
+// const poly = new User('Poly', 'PolyDog');
+// console.log(poly);
+
+// const ajax = new User({
+//     name: 'Ajax',
+//     email: 'ajax@gmail.com',
+//     age: 1231,
+// });
+// console.log(ajax);
+
+// class UserName {
+//     #password;
+
+//     constructor({ name, email, password }) {
+//         this.name = name;
+//         this.email = email;
+//         this.#password = password;
+//     }
+
+//     getEmail() {
+//         return this.email;
+//     }
+
+//     removeEmail(newMail) {
+//         this.email = newMail;
+//     }
+
+//     getPassword() {
+//         return this.#password;
+//     }
+
+//     changePassword(newPassword) {
+//         this.#password = newPassword;
+//     }
+// }
+// const ajax = new UserName({
+//     name: 'Ajax',
+//     email: 'ajax@gmail.com',
+//     age: 1231,
+//     password: 'port123',
+// });
+
+// // console.log(ajax);
+// // console.log(ajax.name);
+
+// ajax.removeEmail('ajax@');
+// console.log(ajax.getEmail());
+
+// console.log(ajax.getPassword());
+// ajax.changePassword('PORTO555');
+// console.log(ajax.getPassword());
+// // console.log(ajax.#password);
+
+// class User {
+//     static Roles = {
+//         ADMIN: 'admin',
+//         EDITOR: 'editor',
+//     };
+
+//     #password;
+//     #role;
+
+//     constructor({ name, age, password }) {
+//         this.name = name;
+//         this.age = age;
+//         this.#password = password;
+//     }
+
+//     get role() {
+//         return this.role;
+//     }
+
+//     set role(newRole) {
+//         this.role = newPassword;
+//     }
+// }
+
+// const mango = new User({
+//     name: 'Mango',
+//     age: 2323,
+//     password: 'MANGO123',
+// });
+
+// mango.name = 'Ajax';
+
+// mango.password = '123123131';
+
+// console.log(mango.password);
+// console.log(mango);
+
+// const User = function ({ name, age, email, country } = {}) {
+//     this.name = name;
+//     this.age = age;
+//     this.email = email;
+//     this.country = country;
+// };
+
+// User.prototype.changeName = function (newName) {
+//     this.name = newName;
+// };
+
+// User.prototype.getName = function () {
+//     return this.name;
+// };
+
+// User.prototype.changeAge = function () {
+//     return this.age;
+// };
+
+// const mango = new User({
+//     name: 'Mango',
+//     age: 28,
+//     email: 'mango@mail.com',
+//     country: 'USA',
+// });
+
+// mango.changeName('Margo');
+// console.log(mango.getName());
+// console.log(mango);
+
+// const ajax = new User();
+// console.log(ajax);
+
+console.log(Math.PI);
+// Object.keys();--статический метод на конструкторе Object
+
+// const Car = function ({ name } = {}) {
+//     //2. Эта функция вызывается в контексте созданного где-то там объекта, то есть в this записывается ссылка на него
+//     this.name = name;
+//     // console.log(this); //это ссылка на пустой объект
+
+//     //3. В свойство this.__proto__ записывается ссылка на объект Car.prototype, то есть Car.prototype это прототип будущего объекта (экземпляра)
+
+//     //4.Ссылка на объект возвращается в место  вызова !new Car!
+// };
+
+// console.log(Car.prototype);
+// //3. В свойство this.__proto__ записывается ссылка на объект Car.prototype, то есть Car.prototype это прототип будущего объекта (экземпляра)
+
+// Car.prototype.changeName = function (newName) {
+//     console.log('Car.prototype ->', this);
+//     console.log('Hello :) ');
+//     this.name = newName;
+// };
+
+// //1. Если функция создается через new где-то там создается пустой объект
+// const myCar = new Car({
+//     name: 'Mango',
+// });
+// myCar.changeName();
+
+// console.log(myCar);
