@@ -115,8 +115,8 @@ titleEl.dataset.modal = 'open';
 const imgRef = document.createElement('img');
 imgRef.classList = 'hero-img';
 imgRef.alt = 'This is a cat';
-imgRef.src =
-    'https://images.pexels.com/photos/57416/cat-sweet-kitty-animals-57416.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=480';
+// imgRef.src =
+//     'https://images.pexels.com/photos/57416/cat-sweet-kitty-animals-57416.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=480';
 imgRef.width = 240;
 // console.log(imgRef);
 
@@ -200,7 +200,47 @@ const makeColorPickerOptions = options => {
 };
 
 const elements = makeColorPickerOptions(colorPickerOptions);
+// console.log(elements);
 colorPickerContainerEl.append(...elements);
+
+// ADD Event Listener
+
+const buttonRef = document.querySelector('.button');
+const secondButtonRef = buttonRef.nextElementSibling;
+const thirdButtonRef = secondButtonRef.nextElementSibling;
+
+secondButtonRef.textContent = 'add listener';
+thirdButtonRef.textContent = 'remove listener';
+buttonRef.textContent = 'click on button';
+
+const onAddListenerOnFirstButton = secondButtonRef.addEventListener(
+    'click',
+    () => {
+        console.log('click on green');
+
+        const addListenerOnFirstButton = buttonRef.addEventListener(
+            'click',
+            onFirstButtonClick,
+        );
+    },
+);
+
+const onRemoveListenerOnFirstButton = thirdButtonRef.addEventListener(
+    'click',
+    () => {
+        console.log('remove listener on first button');
+
+        const removeListenerOnFirstButton = buttonRef.removeEventListener(
+            'click',
+            onFirstButtonClick,
+        );
+    },
+);
+
+function onFirstButtonClick(event) {
+    console.log('click on the first button');
+    console.log(event);
+}
 
 /**
  * Создаем карточку продукта
@@ -310,7 +350,70 @@ const getProductTableRowMarkup = ({
 };
 
 const getProductTableRow = products.map(getProductTableRowMarkup).join('');
-console.log(getProductTableRow);
+// console.log(getProductTableRow);
 
 const markup = document.querySelector('.product-table');
 markup.insertAdjacentHTML('beforeend', getProductTableRow);
+
+//-----------!!!!!!!!!!!!!!!!!!!!----------------------
+//Practice----------------------------------
+
+const Transaction = {
+    DEPOSIT: 'deposit',
+    WITHDRAW: 'withdraw',
+};
+
+const formJsRef = document.querySelector('.js-form-pr');
+const listJsRef = document.querySelector('.list-pr');
+const totalAmountRef = document.querySelector('.total-amount-pr');
+
+const account = {
+    balance: 0,
+    transaction: [],
+
+    getBalance() {
+        return this.balance;
+    },
+
+    createTransaction(amount, type) {
+        return {
+            id: generateId(),
+            type,
+            amount,
+        };
+    },
+
+    deposit(amount) {
+        this.balance += amount;
+        const newTransaction = this.createTransaction(
+            amount,
+            Transaction.DEPOSIT,
+        );
+        this.transaction.push(newTransaction);
+    },
+};
+
+function generateId() {
+    return (
+        String.fromCharCode(Math.floor(Math.random() * 26) + 97) +
+        Math.random().toString(16).slice(2) +
+        Date.now().toString(16).slice(4)
+    );
+}
+
+formJsRef.addEventListener('submit', event => {
+    event.preventDefault(); //сбрасываем дефолтное поведение, что бы не отправляло форму
+    const userInput = event.currentTarget.elements.amount.value; //доступ к input
+    console.log(Number(userInput));
+
+    //нужно нарисовать все - почти все формы так делаются
+
+    const item = document.createElement('li');
+    item.classList.add('item');
+    item.textContent = userInput;
+
+    listJsRef.append(item);
+
+    account.deposit(Number(userInput)); //С input всегда приходит строка, поэтому через Number
+    totalAmountRef.textContent = account.getBalance();
+});
