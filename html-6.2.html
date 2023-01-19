@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="./css/lesson-6.2.css" />
+    </head>
+    <body>
+        <style>
+            .output {
+                font-size: 40px;
+            }
+        </style>
+        <p><a href="./index.html" class="back">Return</a></p>
+
+        <form class="js-registration-form" autocomplete="off">
+            <div role="group">
+                <label>
+                    email
+                    <input type="email" name="email" />
+                </label>
+
+                <label>
+                    password
+                    <input type="new-password" name="password" />
+                </label>
+            </div>
+            <br />
+            <div role="group">
+                <b>Type of subscription</b>
+                <label>
+                    <input type="radio" name="subscription" value="free" />Free
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="subscription"
+                        value="basic"
+                    />Basic
+                </label>
+                <label>
+                    <input type="radio" name="subscription" value="pro" />Pro
+                </label>
+            </div>
+
+            <br />
+            <button type="submit">Finish registration</button>
+        </form>
+
+        <br />
+        <br />
+        <br />
+
+        <label
+            >Name
+            <input type="input" class="js-input" />
+        </label>
+
+        <p>
+            <label>
+                <input type="checkbox" class="js-license" /> I accept
+                license</label
+            >
+        </p>
+
+        <button type="submit" disabled class="js-button">
+            Register as <span>Anonym</span>
+        </button>
+
+        <br />
+        <br />
+
+        <button class="js-button-clear">Clear</button>
+        <p class="output js-output"></p>
+
+        <br />
+
+        <div class="box-mouse_enter">
+            <div class="box_input-mouse_enter"></div>
+        </div>
+        <br />
+        <br />
+
+        <button class="button" data-action="open-modal">Open modal</button>
+
+        <div class="backdrop js-backdrop">
+            <div class="modal-listener">
+                <h2 class="modal-listener_window"></h2>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Maxime, magnam soluta quisquam velit corporis odio suscipit
+                    accusantium iste modi ab, excepturi alias fuga voluptatibus
+                    repellat cumque nisi laudantium veniam! Officia recusandae
+                    in eveniet commodi sit aliquam facilis deserunt est ad
+                    quaerat assumenda, eligendi ipsum earum ducimus ratione
+                    aspernatur quas beatae.
+                </p>
+                <button
+                    type="button"
+                    class="button-listener"
+                    data-action="close-modal"
+                >
+                    Close modal
+                </button>
+            </div>
+        </div>
+
+        <script src="./JS/lesson-6.2.js"></script>
+    </body>
+</html>

@@ -889,14 +889,196 @@ dog.color = 'black';
 
 // console.log(dog.hasOwnProperty('color'));
 // console.log(dog.hasOwnProperty('leg'));
-console.log(dog.__proto__.__proto__);
+// console.log(dog.__proto__.__proto__);
 
-for (const key in dog) {
-    // console.log(key);
-    if (Object.hasOwnProperty.call(dog, key)) {
-        const element = dog[key];
-        console.log(element);
-    }
+// for (const key in dog) {
+//     // console.log(key);
+//     if (Object.hasOwnProperty.call(dog, key)) {
+//         const element = dog[key];
+//         console.log(element);
+//     }
+// }
+
+// console.log(Object.keys(animal));
+
+const magicBtnRef = document.querySelector('.js-magic-btn');
+const siteNavRef = document.querySelector('.site-nav');
+const siteNavItemRef = siteNavRef.querySelectorAll('.site-nav__item');
+const siteNavItemEl = siteNavRef.children;
+
+// console.log(siteNavRef);
+// console.log(siteNavItemEl);
+// console.log('Item:', siteNavItemRef);
+
+const divTryRef = document.querySelector('.js-try');
+console.log(divTryRef.children);
+
+magicBtnRef.addEventListener('click', event => {
+    event.preventDefault();
+    magicBtnRef.style.backgroundColor = 'red';
+
+    const divTryRef = document.querySelector('.js-try');
+    console.log(divTryRef.children);
+});
+
+const currentPage = '/about';
+
+const liCurrentPageRef = document.querySelector(
+    `.site-nav__link[href='${currentPage}']`,
+);
+liCurrentPageRef.style.color = 'red';
+
+/**
+
+ * Вам дан объектный литерал, представляющий часть вашей коллекции музыкальных альбомов. Каждый альбом имеет уникальный идентификационный номер в качестве ключа и несколько других свойств. Не все альбомы имеют полную информацию.
+
+Вы начинаете с updateRecordsфункции, которая принимает литерал объекта records, содержащий коллекцию музыкальных альбомов, id, а prop(like artistили tracks) и value. Завершите функцию, используя приведенные ниже правила, чтобы изменить объект, переданный функции.
+
+Ваша функция всегда должна возвращать весь объект коллекции записей.
+Если propнет tracksи valueне является пустой строкой, обновите или установите для этого альбома propзначение value.
+Если propесть, tracksно в альбоме нет tracksсвойства, создайте пустой массив и добавьте valueв него.
+Если propэто tracksи valueне пустая строка, добавьте valueее в конец существующего tracksмассива альбома.
+Если valueэто пустая строка, удалите данное propсвойство из альбома.
+Примечание.recordCollection Для тестов используется копия объекта.
+ */
+
+/**
+ * После updateRecords(recordCollection, 5439, "artist", "ABBA")должна artistбыть строкаABBA
+Ожидание :После updateRecords(recordCollection, 5439, "tracks", "Take a Chance on Me"), tracksдолжна иметь строку Take a Chance on Meкак последний и единственный элемент.
+Ожидание :После updateRecords(recordCollection, 2548, "artist", "")не artistследует устанавливать
+Ожидание :После updateRecords(recordCollection, 1245, "tracks", "Addicted to Love")должен tracksиметь строку Addicted to Loveв качестве последнего элемента.
+Ожидание :После updateRecords(recordCollection, 2468, "tracks", "Free"), tracksдолжна иметь строку 1999в качестве первого элемента.
+Ожидание :После updateRecords(recordCollection, 2548, "tracks", "")не tracksследует устанавливать
+Ожидание :После updateRecords(recordCollection, 1245, "albumTitle", "Riptide")должна albumTitleбыть строкаRiptide
+ */
+
+const recordCollection = {
+    2548: {
+        albumTitle: 'Slippery When Wet',
+        artist: 'Bon Jovi',
+        tracks: ['Let It Rock', 'You Give Love a Bad Name'],
+    },
+    2468: {
+        albumTitle: '1999',
+        artist: 'Prince',
+        tracks: ['1999', 'Little Red Corvette'],
+    },
+    1245: {
+        artist: 'Robert Palmer',
+        tracks: [],
+    },
+    5439: {
+        albumTitle: 'ABBA Gold',
+    },
+};
+
+// Only change code below this line
+function updateRecords(records, id, prop, value) {
+    return records;
 }
 
-console.log(Object.keys(animal));
+updateRecords(recordCollection, 5439, 'artist', 'ABBA');
+updateRecords(recordCollection, 5439, 'tracks', 'Take a Chance on Me');
+
+//--------------------------------------
+
+/**
+ * Напиши скрипт создания и очистки коллекции элементов. Пользователь вводит количество элементов в input и нажимает кнопку Создать, после чего рендерится коллекция. При нажатии на кнопку Очистить, коллекция элементов очищается.
+ * 
+ * <div id="controls">
+  <input type="number" min="1" max="100" step="1" />
+  <button type="button" data-create>Create</button>
+  <button type="button" data-destroy>Destroy</button>
+</div>
+
+<div id="boxes"></div>
+
+Создай функцию createBoxes(amount), которая принимает один параметр - число. Функция создает столько <div>, сколько указано в amount и добавляет их в div#boxes.
+
+Размеры самого первого <div> - 30px на 30px.
+Каждый элемент после первого, должен быть шире и выше предыдущего на 10px.
+Все элементы должены иметь случайный цвет фона в формате HEX. Используй готовую функцию getRandomHexColor для получения цвета.
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
+
+Создай функцию destroyBoxes(), которая очищает содержимое div#boxes, тем самым удаляя все созданные элементы.
+ */
+
+const refs = {
+    inputOfNumber: document.querySelector('#controls input'),
+    btnCreate: document.querySelector('button[data-create]'),
+    btnDestroy: document.querySelector('button[data-destroy]'),
+    divBoxes: document.querySelector('#boxes'),
+};
+
+refs.inputOfNumber.addEventListener('input', onChangeInput);
+refs.btnCreate.addEventListener('click', onCreateBtnClick);
+refs.btnDestroy.addEventListener('click', destroyBoxes);
+
+function onChangeInput(event) {
+    return event.value;
+}
+
+function onCreateBtnClick(event) {
+    event.preventDefault();
+
+    createBoxes(refs.inputOfNumber.value);
+}
+
+function createBoxes(amount) {
+    let divArr = [];
+
+    for (let index = 0; index < amount; index += 1) {
+        const createDiv = document.createElement('div');
+        createDiv.style.width = 30 + index * 10 + 'px';
+        createDiv.style.height = 30 + index * 10 + 'px';
+        createDiv.style.backgroundColor = getRandomHexColor();
+        divArr.push(createDiv);
+    }
+
+    // return divArr;
+    // console.log(divArr);
+    refs.divBoxes.append(...divArr);
+}
+
+function destroyBoxes() {
+    refs.divBoxes.innerHTML = '';
+}
+
+function getRandomHexColor() {
+    return `#${Math.floor(Math.random() * 16777215)
+        .toString(16)
+        .padStart(6, 0)}`;
+}
+
+/*
+// change position element in array
+
+const arr = ['a', 'b', 'c', 'd'];
+
+function changeElPosition(
+    arr,
+    indexElChangePosition,
+    indexArrayToChangePosition,
+) {
+    const newArr = [];
+
+    let indEl = '';
+
+    arr.map((element, index) => {
+        if (indexElChangePosition === index) {
+            indEl = element;
+        } else newArr.push(element);
+    });
+
+    newArr.splice(indexArrayToChangePosition, 0, indEl);
+
+    return newArr;
+}
+
+console.log(changeElPosition(arr, 1, 2));
+console.log(changeElPosition(arr, 3, 1));
+*/
