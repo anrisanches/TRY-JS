@@ -66,3 +66,34 @@ body {
     margin-bottom: 0;
     letter-spacing: 0.1em;
 }
+
+.js-container {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.button-container {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: inherit;
+}
+.button-container__button {
+    margin-left: 20px;
+    padding: 10px 30px 10px 30px;
+    border-radius: 5px;
+    background-color: pink;
+
+    cursor: pointer;
+}
+
+.button-container__button:hover {
+    background-color: rgb(227, 172, 172);
+    color: steelblue;
+    border: 2px solid steelblue;
+}
+
+.is-active {
+    background-color: steelblue;
+}

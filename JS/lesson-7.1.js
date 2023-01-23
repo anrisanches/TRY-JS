@@ -1,5 +1,6 @@
 ('use strict');
 import color_pickers from './data/color-pickers.js';
+import { courses } from './data/courses.js';
 
 //-----Выбирает одну кнопку из всех-------------
 
@@ -124,4 +125,95 @@ function addActiveClass(cart) {
 
 function setBodyColor(color) {
     document.body.style.backgroundColor = color;
+}
+
+//---------способ добавления произвольного количества div
+function createBoxes(amount) {
+    const arr = [];
+
+    arr.length = amount;
+
+    const newArr = [];
+
+    arr.fill(amount).map((el, index) => {
+        const baseSize = 30;
+        const biggestSize = baseSize + index * 10;
+
+        newArr.push(biggestSize);
+    });
+
+    return newArr;
+}
+
+// console.log(createBoxes(10));
+
+/**
+ * Practice for 7.1
+ */
+
+//Написать скрипт по добавлению кнопок, и прорисовке цен курсов, при клике на любую кнопку, если не выбрано то выводятся все курсы
+//
+const buttonContainer = document.querySelector('.button-container');
+const coursesContainer = document.querySelector('.courses-container');
+
+buttonContainer.addEventListener('click', onCurrentBtnClick);
+
+createButtons(courses);
+markupFilteredCourses(courses);
+
+function createButtons(ourCourses) {
+    const arrFilteredCourses = filterArrayCourses(ourCourses);
+
+    const markup = arrFilteredCourses
+        .map(nameCourse => {
+            return `<button class="button-container__button" data-value="${nameCourse}">${nameCourse}</button>`;
+        })
+        .join('');
+    buttonContainer.insertAdjacentHTML('beforeend', markup);
+}
+
+function filterArrayCourses(courses) {
+    const filteredCourses = courses.flatMap(({ tags }) => {
+        return tags;
+    });
+    const arrTags = [...new Set(filteredCourses)];
+    return arrTags;
+}
+
+function onCurrentBtnClick(evt) {
+    const currentElement = evt.target;
+    const currentValue = currentElement.dataset.value;
+    const activeEl = document.querySelector('.is-active');
+
+    // if (!currentValue) {
+    //     return;
+    // }
+
+    if (evt.target.nodeName !== 'BUTTON') {
+        return;
+    }
+
+    coursesContainer.innerHTML = '';
+
+    if (activeEl) {
+        activeEl.classList.remove('is-active');
+    }
+
+    currentElement.classList.add('is-active');
+
+    const filteredCourses = courses.filter(course => {
+        return course.tags.includes(currentValue);
+    });
+
+    markupFilteredCourses(filteredCourses);
+}
+
+function markupFilteredCourses(ourCourses) {
+    const createItemCourse = ourCourses
+        .map(course => {
+            return `<li><p>${course.name} - ${course.price}$</p></li>`;
+        })
+        .join('');
+
+    return coursesContainer.insertAdjacentHTML('beforeend', createItemCourse);
 }
