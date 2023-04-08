@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Lesson 8.2</title>
+        <link rel="stylesheet" href="/css/lessons-8.2.css" />
+    </head>
+    <body>
+        <a href="/index.html">ON MAIN</a>
+
+        <h1>Hello world</h1>
+
+        <div class="package">
+            <form class="form">
+                <label class="form__label" name="user-name"
+                    >Name
+                    <input type="input" class="form__input" placeholder="Enter your name" />
+                </label>
+                <label class="form__label">
+                    Leave your response
+                    <textarea
+                        class="form__textarea"
+                        name="user-response"
+                        cols="30"
+                        rows="10"
+                        draggable="false"
+                        title="Put your response"
+                    ></textarea>
+                </label>
+
+                <fieldset>
+                    <legend>Enter your choice</legend>
+                        <label class="form__label">
+                            <input type="radio" class="form__input-radio"
+                            name="choice" value="like" checked>Like
+                            <input type="radio" class="form__input-radio"
+                                name="choice" value="dislike">Dislike
+                        </label>
+                </fieldset>
+                
+                <button type="button" class="form__button">send</button>
+            </form>    
+        </div>
+        <form action="">
+
+
+        <script src="./JS/lessons-8.2.js"></script>
+    </body>
+</html>
