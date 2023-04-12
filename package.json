@@ -1,0 +1,25 @@
+{
+  "name": "try",
+  "version": "1.0.0",
+  "main": "index.js",
+    "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnriSanches/TRY-JS.git"
+  },
+  "keywords": [],
+  "author": "AnriSanches <sanchesanri@gamil.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnriSanches/TRY-JS/issues"
+  },
+  "homepage": "https://github.com/AnriSanches/TRY-JS#readme",
+  "description": "",
+  "devDependencies": {
+    "parcel": "^2.8.3"
+  }
+}
