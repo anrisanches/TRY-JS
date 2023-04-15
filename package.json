@@ -2,7 +2,7 @@
   "name": "try",
   "version": "1.0.0",
   "main": "index.js",
-    "source": "src/index.html",
+  "source": "src/index.html",
   "scripts": {
     "start": "parcel",
     "build": "parcel build"
@@ -21,5 +21,8 @@
   "description": "",
   "devDependencies": {
     "parcel": "^2.8.3"
+  },
+  "dependencies": {
+    "lodash.throttle": "^4.1.1"
   }
 }

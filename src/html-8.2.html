@@ -14,13 +14,13 @@
         <h1>Hello world</h1>
 
         <div class="package">
-            <form class="form">
-                <label class="form__label" name="user-name"
-                    >Name
+            <form class="form js-feedback-form">
+                <label class="form__label" name="user-name">
+                    <b>Name</b>
                     <input type="input" class="form__input" placeholder="Enter your name" />
                 </label>
                 <label class="form__label">
-                    Leave your response
+                    <b>Leave your response</b>
                     <textarea
                         class="form__textarea"
                         name="user-response"
@@ -31,7 +31,7 @@
                     ></textarea>
                 </label>
 
-                <fieldset>
+                <fieldset class="">
                     <legend>Enter your choice</legend>
                     <label class="form__label">
                         <input
@@ -41,6 +41,8 @@
                             value="like"
                             checked
                         />Like
+                    </label>
+                    <label class="form__label">
                         <input
                             type="radio"
                             class="form__input-radio"
@@ -50,7 +52,7 @@
                     </label>
                 </fieldset>
 
-                <button type="button" class="form__button">send</button>
+                <button type="submit" class="form__button">send</button>
             </form>
         </div>
     </body>
