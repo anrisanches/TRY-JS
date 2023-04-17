@@ -17,13 +17,18 @@
             <form class="form js-feedback-form">
                 <label class="form__label" name="user-name">
                     <b>Name</b>
-                    <input type="input" class="form__input" placeholder="Enter your name" />
+                    <input
+                        type="text"
+                        class="form__input"
+                        name="name"
+                        placeholder="Enter your name"
+                    />
                 </label>
                 <label class="form__label">
                     <b>Leave your response</b>
                     <textarea
                         class="form__textarea"
-                        name="user-response"
+                        name="text_response"
                         cols="30"
                         rows="10"
                         draggable="false"
@@ -39,7 +44,6 @@
                             class="form__input-radio"
                             name="choice"
                             value="like"
-                            checked
                         />Like
                     </label>
                     <label class="form__label">
