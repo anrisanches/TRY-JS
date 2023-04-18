@@ -4,8 +4,8 @@
   "main": "index.js",
   "source": "src/index.html",
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build"
+    "dev": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url AnriSanches/TRY-JS.git"
   },
   "repository": {
     "type": "git",

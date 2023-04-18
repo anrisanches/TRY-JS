@@ -3,6 +3,7 @@ console.log('HEllo');
 
 const STORAGE_NAME = 'userName';
 const STORAGE_MESSAGE = 'feedback-msg';
+const STORAGE_DATA = 'userData';
 
 const refs = {
     form: document.querySelector('.js-feedback-form'),
@@ -11,10 +12,10 @@ const refs = {
     radioBtn: document.querySelector('.js-feedback-form .form__label'),
 };
 
-// refs.form.addEventListener('click', onFormSubmit);
+refs.form.addEventListener('input', throttle(onFormInput, 1000));
 refs.form.addEventListener('submit', onFormSubmit);
-refs.input.addEventListener('input', onInputClick);
-refs.textarea.addEventListener('input', throttle(onTextareaInput, 1000));
+// refs.input.addEventListener('input', onInputClick);
+// refs.textarea.addEventListener('input', throttle(onTextareaInput, 1000));
 refs.radioBtn.addEventListener('change', onChoiceCheckbox);
 
 const dataArr = [];
@@ -25,6 +26,12 @@ populateMessageOutput();
  * - Stop actions default
  * - remove message from storage
  * - clean the form
+ */
+
+/**
+ *
+ * if we want to write data in localStorage, we use JSON.stringify(dog);
+ * if we want to take data from localStorage, we use JSON.parse()
  */
 
 function onInputClick(evt) {
@@ -39,12 +46,8 @@ function onInputClick(evt) {
  */
 
 function onTextareaInput(evt) {
-    // const message = evt.currentTarget.value; - not work, because currentTarget has ascent, and when this event will happen, in stack inside will be full shit
+    // const message = evt.currentTarget.value; - will not work, because currentTarget has ascent, and when this event will happen, in stack inside will be full shit
     const message = evt.target.value;
-
-    if (message === null) {
-        console.log(1);
-    }
 
     localStorage.setItem(STORAGE_MESSAGE, message);
 }
@@ -82,6 +85,7 @@ function onFormSubmit(evt) {
 
     localStorage.removeItem(STORAGE_NAME);
     localStorage.removeItem(STORAGE_MESSAGE);
+    localStorage.removeItem(STORAGE_DATA);
 }
 
 function savedData(eventForm) {
@@ -108,4 +112,31 @@ function savedData(eventForm) {
     dataArr.push(userDataResponse);
 }
 
-console.log(dataArr);
+// console.log(dataArr);
+
+const formData = {};
+
+function onFormInput(evt) {
+    const eventTarget = evt.target;
+    formData[eventTarget.name] = eventTarget.value;
+
+    const formDataJSON = JSON.stringify(formData);
+
+    const sendDataLocalStorage = localStorage.setItem(STORAGE_DATA, formDataJSON);
+}
+
+function fillEntryField() {
+    const getDataLocalStorage = localStorage.getItem(STORAGE_DATA);
+
+    const parseUserData = JSON.parse(getDataLocalStorage);
+
+    console.log(parseUserData);
+
+    if (getDataLocalStorage) {
+        refs.input.value = parseUserData?.name;
+
+        refs.textarea.value = parseUserData?.text_response;
+    }
+}
+
+fillEntryField();
