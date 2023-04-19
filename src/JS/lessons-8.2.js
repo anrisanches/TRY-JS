@@ -140,3 +140,6 @@ function fillEntryField() {
 }
 
 fillEntryField();
+
+const arr = [1, 2, 33, [54, 67, 87, [102, 203], 55, 57]];
+console.log(arr.flat(Infinity));
