@@ -130,8 +130,6 @@ function fillEntryField() {
 
     const parseUserData = JSON.parse(getDataLocalStorage);
 
-    console.log(parseUserData);
-
     if (getDataLocalStorage) {
         refs.input.value = parseUserData?.name;
 
@@ -141,5 +139,57 @@ function fillEntryField() {
 
 fillEntryField();
 
-const arr = [1, 2, 33, [54, 67, 87, [102, 203], 55, 57]];
-console.log(arr.flat(Infinity));
+// const arr = [1, 2, 33, [54, 67, 87, [102, 203], 55, 57]];
+// console.log(arr.flat(Infinity));
+
+const formSelect = document.querySelector('.form-select');
+
+initForm();
+
+formSelect.addEventListener('submit', onFormSelectSubmit);
+formSelect.addEventListener('change', onFormSelectChange);
+
+function onFormSelectSubmit(evt) {
+    evt.preventDefault();
+
+    const targetEl = evt.target.elements;
+
+    const formDataSelect = new FormData(formSelect);
+
+    formDataSelect.forEach((value, key) => {
+        console.log('key - ', key, 'value - ', value);
+    });
+
+    // const formData = new FormData(evt.currentTarget);
+
+    // formData.forEach((value, key) => {
+    //     console.log('key - ', key, 'value - ', value);
+    // });
+}
+
+function onFormSelectChange(evt) {
+    let parsedFilters = localStorage.getItem('selectedFilter');
+
+    parsedFilters = parsedFilters ? JSON.parse(parsedFilters) : {};
+
+    parsedFilters[evt.target.name] = evt.target.value;
+
+    if (parsedFilters) {
+        localStorage.setItem('selectedFilter', JSON.stringify(parsedFilters));
+    }
+
+    console.log(parsedFilters);
+}
+
+function initForm() {
+    let parsedFilters = localStorage.getItem('selectedFilter');
+
+    if (parsedFilters) {
+        parsedFilters = JSON.parse(parsedFilters);
+    }
+
+    Object.entries(parsedFilters).forEach(([key, value]) => {
+        formSelect.elements[key].value = value;
+        console.log(key, value);
+    });
+}

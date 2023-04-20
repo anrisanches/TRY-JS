@@ -10,6 +10,7 @@ body {
 .package{
     width: 250px;
     padding: 30px;
+    display: flex;
 }
 
 .form__textarea{
@@ -32,4 +33,27 @@ body {
     border-radius: 5px;
     background-color: #ad9393;
     color: blue;
+}
+
+.form-select{
+    margin-left: 50px;
+}
+
+.form__select{
+    width: 150px;
+}
+
+.wrapper{
+    width: 150px;
+    margin-top: 10px;
+}
+
+.wrapper-btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-wrapper__btn{
+    width: 45%;
 }

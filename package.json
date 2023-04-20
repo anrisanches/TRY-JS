@@ -4,8 +4,8 @@
   "main": "index.js",
   "source": "src/index.html",
   "scripts": {
-    "dev": "parcel src/*.html --open",
-    "build": "parcel build src/*.html --public-url /TRY-JS/"
+    "dev": "parcel --port 1144 src/*.html --open",
+    "build": "parcel build src/*.html --public-url /TRY-JS"
   },
   "repository": {
     "type": "git",
