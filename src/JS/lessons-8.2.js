@@ -4,6 +4,7 @@ console.log('HEllo');
 const STORAGE_NAME = 'userName';
 const STORAGE_MESSAGE = 'feedback-msg';
 const STORAGE_DATA = 'userData';
+const SELECTED_FILTER_DATA = 'selectedFilter';
 
 const refs = {
     form: document.querySelector('.js-feedback-form'),
@@ -144,8 +145,6 @@ fillEntryField();
 
 const formSelect = document.querySelector('.form-select');
 
-initForm();
-
 formSelect.addEventListener('submit', onFormSelectSubmit);
 formSelect.addEventListener('change', onFormSelectChange);
 
@@ -160,6 +159,10 @@ function onFormSelectSubmit(evt) {
         console.log('key - ', key, 'value - ', value);
     });
 
+    localStorage.removeItem(SELECTED_FILTER_DATA);
+
+    formSelect.reset();
+
     // const formData = new FormData(evt.currentTarget);
 
     // formData.forEach((value, key) => {
@@ -167,29 +170,30 @@ function onFormSelectSubmit(evt) {
     // });
 }
 
+initForm();
+
 function onFormSelectChange(evt) {
-    let parsedFilters = localStorage.getItem('selectedFilter');
+    let parsedFilters = localStorage.getItem(SELECTED_FILTER_DATA);
 
     parsedFilters = parsedFilters ? JSON.parse(parsedFilters) : {};
 
     parsedFilters[evt.target.name] = evt.target.value;
 
     if (parsedFilters) {
-        localStorage.setItem('selectedFilter', JSON.stringify(parsedFilters));
+        localStorage.setItem(SELECTED_FILTER_DATA, JSON.stringify(parsedFilters));
     }
 
-    console.log(parsedFilters);
+    // console.log(parsedFilters);
 }
 
 function initForm() {
-    let parsedFilters = localStorage.getItem('selectedFilter');
+    let parsedFilters = localStorage.getItem(SELECTED_FILTER_DATA);
 
+    parsedFilters = JSON.parse(parsedFilters);
     if (parsedFilters) {
-        parsedFilters = JSON.parse(parsedFilters);
+        Object.entries(parsedFilters).forEach(([key, value]) => {
+            formSelect.elements[key].value = value;
+            // console.log(key, value);
+        });
     }
-
-    Object.entries(parsedFilters).forEach(([key, value]) => {
-        formSelect.elements[key].value = value;
-        console.log(key, value);
-    });
 }
