@@ -166,3 +166,32 @@ function onEscKeyPress(event) {
         onCloseModal();
     }
 }
+
+//--add button to click
+
+const divRefs = {
+    btnRef: document.querySelector('.listenerForBtn'),
+    addListener: document.querySelector('.add-listener'),
+    removeListener:document.querySelector('.remove-listener'),
+    click: document.querySelector('.clicker'),
+    textParagraph: document.querySelector('.listener-text__button'),
+};
+
+    function clickMe () {
+            console.log('CLICK ME');
+            divRefs.textParagraph.insertAdjacentHTML('afterend', '<p>It is CLICK ME</p>')
+            console.log(event);
+    }
+
+    divRefs.addListener.addEventListener('click', ()=>{
+        divRefs.textParagraph.textContent = 'Add event to button (click me)'
+        divRefs.click.addEventListener('click', clickMe)
+    })
+
+    divRefs.removeListener.addEventListener('click',()=>{
+        divRefs.textParagraph.textContent = 'Remove to event from button (click me) '
+
+        divRefs.click.removeEventListener('click', clickMe)
+    })
+
+console.log(1);

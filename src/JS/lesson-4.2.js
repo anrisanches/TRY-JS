@@ -368,26 +368,7 @@ const playerIdToFind = 'player-2';
 // );
 // console.log(totalAmount);
 
-// const tweets = [
-//     { id: '000', likes: 4, tags: ['js', 'nude.js'] },
-//     { id: '001', likes: 7, tags: ['html', 'css'] },
-//     { id: '002', likes: 2, tags: ['html', 'js', 'node.js'] },
-//     { id: '003', likes: 0, tags: ['css', 'react'] },
-//     { id: '004', likes: 12, tags: ['js', 'nude.js', 'react'] },
-// ];
-
-// const allTags = array => {
-//     const uniqueTags = array
-//         .flatMap(obj => obj.tags)
-//         .filter((element, index, array) => array.indexOf(element) === index);
-//     console.log(uniqueTags);
-//     // return array.reduce(
-//     //     (ollCorses, { tags }) => ollCorses + tags),
-//     //     [],
-//     // );
-// };
-
-// console.log(allTags(tweets));
+ 
 
 // const allTags1 = tweets.reduce((accTags, tweet) => {
 //     // accTags.push(...tweet.tags); - здесь мы мутируем массив по ссылке, поэтому нужно шаг 2

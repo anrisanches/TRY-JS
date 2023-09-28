@@ -57,3 +57,18 @@ body.show-modal .modal-listener {
     transform: scale(1.1);
     transition: transform 200ms ease-in-out;
 }
+
+.listenerForBtn{
+    margin: 30px;
+}
+.listenerForBtn>button{
+    margin-left: 15px;
+    background-color: pink;
+    /* color: teal; */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.listener-text__button{
+    font-size: 30px;
+}

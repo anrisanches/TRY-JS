@@ -15,11 +15,14 @@
 // mango.changeEmail('my-email@mail.com')
 // console.log(mango);
 
-// const objA = {
-//     x: 5,
-// }
+const objA = {
+  x: 5,
+};
 
-// console.log(objA.__proto__===Object.prototype);
+
+  // body
+
+// console.log(objA.__proto__ === Object.prototype);
 
 // class Car {
 
@@ -205,7 +208,7 @@
 
 // ----------------------------------------
 
-console.dir(Math.__proto__);
+// console.dir(Math.__proto__);
 
 // const Car = function ({ brand, model, price } = {}) {
 //     this.brand = brand;
@@ -293,6 +296,33 @@ console.dir(Math.__proto__);
  *
  *
  */
+
+class Blogger {
+  constructor({age,email,numberOfPosts,topics}={}) {
+    this.age = age;
+    this.email = email;
+    this.numberOfPosts = numberOfPosts;
+    this.topics = topics;
+  }
+
+  getInfo() {
+    return `Blogger ${this.email} is ${this.age} years old and has ${this.numberOfPosts} posts.`;
+  }
+
+  updatePostCount(value) {
+    // this.numberOfPosts = 
+  }
+}
+
+const mango = new Blogger({
+    email: 'mango@mail.com',
+    age: 30,
+    numberOfPosts: 343,
+    topic: ['tech', 'cooking'],
+});
+
+mango.updatePostCount(555);
+console.log(mango.getInfo());
 
 // class Bloggers {
 //     constructor({
@@ -473,3 +503,143 @@ console.dir(Math.__proto__);
 // secondToggle.toggle();
 // console.log(secondToggle.on);
 // console.groupEnd('secondToggle');
+
+class Hero {
+  #quantityUsers;
+  #password;
+  static counter = 0;
+  static addUser() {
+    this.counter += 1;
+    console.log(`Count of users ${this.counter}`);
+  }
+  constructor({ name, sex, age, classHero, email, password } = {}) {
+    this.name = name;
+    this.sex = sex;
+    this.age = age;
+    this.classHero = classHero;
+    this.email = email;
+    this.#password = password;
+    Hero.addUser();
+  }
+  get passwordUser() {
+    return this.name;
+  }
+
+  set passwordUser(value) {
+    const unswer = prompt('Enter password');
+
+    if (unswer !== this.#password) {
+      return alert(`Go ==> to another plase`);
+    } else {
+      this.#password === value;
+      console.log('Your password changed');
+    }
+  }
+}
+
+class Wizard extends Hero {
+  constructor({ name, sex, age, classHero, email, password, damage, speling }) {
+    super({ name, sex, age, classHero, email, password });
+    this.damage = damage;
+    this.speling = speling;
+  }
+}
+
+const wizard = new Wizard({
+  name: 'Alex',
+  sex: 'man',
+  age: 18,
+  classHero: 'Wizard',
+  email: 'ss@mail.com',
+  password: 'qwerty',
+  damage: 100,
+  speling: 'fireBoll',
+});
+
+// wizard.passwordUser = 'sss';
+// console.log(wizard);
+
+// console.dir(wizard.passwordUser());
+
+//!! 0
+//Boolian(0)
+//!!~0
+
+//Порівняння на 0 та " " - пустий рядок не використовується, пошукати практику, що саме використовується
+// if(array.includes(item) - we can replace on if(!!~index) )
+//if(!!~ind) або if(ind !== -1)
+
+// Change code below this line
+const getUserWithEmail = (users, email) => users.find(user => user.email === email);
+// Change code above this line
+
+console.log(
+  getUserWithEmail(
+    [
+      {
+        name: 'Moore Hensley',
+        email: 'moorehensley@indexia.com',
+        eyeColor: 'blue',
+        friends: ['Sharron Pace'],
+        isActive: false,
+        balance: 2811,
+        gender: 'male',
+      },
+      {
+        name: 'Sharlene Bush',
+        email: 'sharlenebush@tubesys.com',
+        eyeColor: 'blue',
+        friends: ['Briana Decker', 'Sharron Pace'],
+        isActive: true,
+        balance: 3821,
+        gender: 'female',
+      },
+      {
+        name: 'Ross Vazquez',
+        email: 'rossvazquez@xinware.com',
+        eyeColor: 'green',
+        friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
+        isActive: false,
+        balance: 3793,
+        gender: 'male',
+      },
+      {
+        name: 'Elma Head',
+        email: 'elmahead@omatom.com',
+        eyeColor: 'green',
+        friends: ['Goldie Gentry', 'Aisha Tran'],
+        isActive: true,
+        balance: 2278,
+        gender: 'female',
+      },
+      {
+        name: 'Carey Barr',
+        email: 'careybarr@nurali.com',
+        eyeColor: 'blue',
+        friends: ['Jordan Sampson', 'Eddie Strong'],
+        isActive: true,
+        balance: 3951,
+        gender: 'male',
+      },
+      {
+        name: 'Blackburn Dotson',
+        email: 'blackburndotson@furnigeer.com',
+        eyeColor: 'brown',
+        friends: ['Jacklyn Lucas', 'Linda Chapman'],
+        isActive: false,
+        balance: 1498,
+        gender: 'male',
+      },
+      {
+        name: 'Sheree Anthony',
+        email: 'shereeanthony@kog.com',
+        eyeColor: 'brown',
+        friends: ['Goldie Gentry', 'Briana Decker'],
+        isActive: true,
+        balance: 2764,
+        gender: 'female',
+      },
+    ],
+    'blackburndotson@furnigeer.com'
+  )
+);
