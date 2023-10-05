@@ -36,6 +36,38 @@ import { courses } from './data/courses.js';
 //     // }
 // }
 
+//----------------------TRY 2.0-------------------
+
+// const containerRefs = document.querySelector('.container');
+// containerRefs.addEventListener('click', onBtnClick);
+
+// function onBtnClick(evt) {
+//   const btn = evt.target;
+
+//   if (btn.nodeName !== 'BUTTON') {
+//     return;
+//   }
+
+//   currentActiveBtnClick()
+
+//   if (btn.classList.contains('is-active')) {
+//     btn.classList.remove('is-active');
+//     return;
+//   }
+
+//   btn.classList.add('is-active');
+//   const btnValue = btn.dataset.value
+//   console.log(btnValue);
+// }
+
+// function currentActiveBtnClick () {
+//     const currentBtnClick = document.querySelector('.is-active');
+//     //   currentBtnClick.classList.remove('is-active')
+//       if (currentBtnClick) {
+//         currentBtnClick.classList.remove('is-active');
+//       }
+// }
+
 //--------Выбирает по одной кнопке--------------
 
 // const containerRefs = document.querySelector('.container');
@@ -58,91 +90,194 @@ import { courses } from './data/courses.js';
 //     activeBtn.classList.toggle('is-active');
 // }
 
+//-----------TRY 2.0---------------------------
+
+// const containerRefs = document.querySelector('.container');
+// containerRefs.addEventListener('click', onButtonClick);
+// const selectedTags = new Set()
+
+// function onButtonClick (evt) {
+//     const activeBtn = evt.target;
+//     const btnValue = activeBtn.dataset.value;
+
+//     if (activeBtn.nodeName !== 'BUTTON') {
+//         return
+//     };
+
+//     if (activeBtn.classList.contains('is-active')) {
+//         selectedTags.delete(btnValue)
+//     }else {
+//         selectedTags.add(btnValue)
+//     }
+
+//     activeBtn.classList.toggle('is-active')
+//     console.log(selectedTags);
+// }
+
 //-----COLOR PICKERS -------------------------
 
-const paletteContainerRef = document.querySelector('.js-palette');
-paletteContainerRef.addEventListener('click', onCurrentColorContainerClick);
+// const paletteContainerRef = document.querySelector('.js-palette');
+// paletteContainerRef.addEventListener('click', onCurrentColorContainerClick);
 
-const markup = createColorCardsMarkup(color_pickers);
-// paletteContainerRef.insertAdjacentHTML('afterbegin', markup);
-paletteContainerRef.insertAdjacentHTML('beforeend', markup);
+// const markup = createColorCardsMarkup(color_pickers);
+// // paletteContainerRef.insertAdjacentHTML('afterbegin', markup);
+// paletteContainerRef.insertAdjacentHTML('beforeend', markup);
 
-function createColorCardsMarkup(cards) {
-    return cards
-        .map(({ hex, rgb }) => {
-            return `<div class="color-card">
-                <div
-                    class="color-swatch"
-                    data-hex="${hex}"
-                    data-rgb="${rgb}"
-                    style="background-color: ${hex}"
-                ></div>
-                <div class="color-meta">
-                    <p>HEX: ${hex}</p>
-                    <p>RGB: ${rgb}</p>
-                </div>
-            </div>`;
-        })
-        .join('');
-}
+// function createColorCardsMarkup(cards) {
+//   return cards
+//     .map(({ hex, rgb }) => {
+//       return `<div class="color-card">
+//                 <div
+//                     class="color-swatch"
+//                     data-hex="${hex}"
+//                     data-rgb="${rgb}"
+//                     style="background-color: ${hex}"
+//                 ></div>
+//                 <div class="color-meta">
+//                     <p>HEX: ${hex}</p>
+//                     <p>RGB: ${rgb}</p>
+//                 </div>
+//             </div>`;
+//     })
+//     .join('');
+// }
 
-function onCurrentColorContainerClick(evt) {
-    const isColorSwatchEl = evt.target.classList.contains('color-swatch');
-    if (!isColorSwatchEl) {
-        return;
-    }
-    const dataHexCurrentEl = evt.target.dataset.hex;
+// function onCurrentColorContainerClick(evt) {
+//   const isColorSwatchEl = evt.target.classList.contains('color-swatch');
+//   if (!isColorSwatchEl) {
+//     return;
+//   }
+//   const dataHexCurrentEl = evt.target.dataset.hex;
 
-    const parentColorEl = evt.target.closest('.color-card');
-    // console.log(parentColorEl); //Первое совпадение вверх по селектору класса
-    /*
-    const parentColorCard = swatchEl.parentNode;
-    console.log(parentColorCard); //ищет родителя
-    */
-    removeIsActiveClassFromColorPicker();
-    addActiveClass(parentColorEl);
-    setBodyColor(dataHexCurrentEl);
+//   const parentColorEl = evt.target.closest('.color-card');
+//   // console.log(parentColorEl); //Первое совпадение вверх по селектору класса
+//   /*
+//     const parentColorCard = swatchEl.parentNode;
+//     console.log(parentColorCard); //ищет родителя
+//     */
+//   removeIsActiveClassFromColorPicker();
+//   addActiveClass(parentColorEl);
+//   setBodyColor(dataHexCurrentEl);
 
-    document.addEventListener('keyup', event => {
-        event.preventDefault();
-        let currentActiveCard = null;
-        if (event.code === 'Escape') {
-            setBodyColor('#fff');
-            removeIsActiveClassFromColorPicker();
-        }
-    });
-}
+//   document.addEventListener('keyup', event => {
+//     event.preventDefault();
+//     let currentActiveCard = null;
+//     if (event.code === 'Escape') {
+//       setBodyColor('#fff');
+//       removeIsActiveClassFromColorPicker();
+//     }
+//   });
+// }
 
-function removeIsActiveClassFromColorPicker() {
-    const currentColorEl = document.querySelector('.color-card.is-active');
-    if (currentColorEl) {
-        currentColorEl.classList.remove('is-active');
-    }
-}
-function addActiveClass(cart) {
-    cart.classList.add('is-active');
-}
+// function removeIsActiveClassFromColorPicker() {
+//   const currentColorEl = document.querySelector('.color-card.is-active');
+//   if (currentColorEl) {
+//     currentColorEl.classList.remove('is-active');
+//   }
+// }
+// function addActiveClass(cart) {
+//   cart.classList.add('is-active');
+// }
 
-function setBodyColor(color) {
-    document.body.style.backgroundColor = color;
-}
+// function setBodyColor(color) {
+//   document.body.style.backgroundColor = color;
+// }
+
+//----------------TRY 2.0-----------------------------------
+
+// const paletteRef = document.querySelector('.js-palette');
+// paletteRef.addEventListener('click', onCurrentColorCardClick)
+
+// const markup = markupColorPicker(color_pickers);
+// paletteRef.insertAdjacentHTML('beforeend',markup)
+
+// function onCurrentColorCardClick (evt) {
+//     const currentColor = evt.target;
+//     const dataHexCurrentEl = currentColor.dataset.hex
+
+//     const currentColorSwatch = currentColor.classList.contains('color-swatch');
+    
+//     if(!currentColorSwatch){
+//         return
+//     }
+
+//     const currentColorCard = currentColor.closest('.color-card')
+
+//     if (!currentColorCard) {
+//         return
+//     }
+
+
+//     removeIsActiveClassFromColorPicker()
+//     //It is removeIsActiveClassFromColorPicker function
+//     // const colorCardIsActive = document.querySelector('.color-card.is-active');
+//     // if (colorCardIsActive) {
+//     //     colorCardIsActive.classList.remove('is-active');
+//     // } 
+//     addIsActiveToColorPickerCard(currentColorCard)
+
+//     //It is addIsActiveToColorPickerCard function
+//     //color.classList.add('is-active');
+
+
+//     currentColorCard.classList.add('is-active');
+
+
+//     addColorToBody(dataHexCurrentEl)
+// }
+
+// function removeIsActiveClassFromColorPicker () {
+//     const colorCardIsActive = document.querySelector('.color-card.is-active');
+
+//     if (colorCardIsActive) {
+//         colorCardIsActive.classList.remove('is-active');
+//     } 
+// }
+
+// function addIsActiveToColorPickerCard (color) {
+//     color.classList.add('is-active');
+// }
+
+// function addColorToBody (color) {
+//     document.body.style.background = color
+// }
+
+// function markupColorPicker(colors) {
+//   return colors.map(({ hex, rgb }) => {
+//     return `<div class="color-card">
+//                      <div
+//                          class="color-swatch"
+//                          data-hex="${hex}"
+//                          data-rgb="${rgb}"
+//                          style="background-color: ${hex}"
+//                      >
+//                      </div>
+//                      <div class="color-meta">
+//                          <p>HEX: ${hex}</p>
+//                          <p>RGB: ${rgb}</p>
+//                      </div>
+//                  </div>`;
+//   }).join('');
+// }
+
+
 
 //---------способ добавления произвольного количества div
 function createBoxes(amount) {
-    const arr = [];
+  const arr = [];
 
-    arr.length = amount;
+  arr.length = amount;
 
-    const newArr = [];
+  const newArr = [];
 
-    arr.fill(amount).map((el, index) => {
-        const baseSize = 30;
-        const biggestSize = baseSize + index * 10;
+  arr.fill(amount).map((el, index) => {
+    const baseSize = 30;
+    const biggestSize = baseSize + index * 10;
 
-        newArr.push(biggestSize);
-    });
+    newArr.push(biggestSize);
+  });
 
-    return newArr;
+  return newArr;
 }
 
 // console.log(createBoxes(10));
@@ -162,58 +297,58 @@ createButtons(courses);
 markupFilteredCourses(courses);
 
 function createButtons(ourCourses) {
-    const arrFilteredCourses = filterArrayCourses(ourCourses);
+  const arrFilteredCourses = filterArrayCourses(ourCourses);
 
-    const markup = arrFilteredCourses
-        .map(nameCourse => {
-            return `<button class="button-container__button" data-value="${nameCourse}">${nameCourse}</button>`;
-        })
-        .join('');
-    buttonContainer.insertAdjacentHTML('beforeend', markup);
+  const markup = arrFilteredCourses
+    .map(nameCourse => {
+      return `<button class="button-container__button" data-value="${nameCourse}">${nameCourse}</button>`;
+    })
+    .join('');
+  buttonContainer.insertAdjacentHTML('beforeend', markup);
 }
 
 function filterArrayCourses(courses) {
-    const filteredCourses = courses.flatMap(({ tags }) => {
-        return tags;
-    });
-    const arrTags = [...new Set(filteredCourses)];
-    return arrTags;
+  const filteredCourses = courses.flatMap(({ tags }) => {
+    return tags;
+  });
+  const arrTags = [...new Set(filteredCourses)];
+  return arrTags;
 }
 
 function onCurrentBtnClick(evt) {
-    const currentElement = evt.target;
-    const currentValue = currentElement.dataset.value;
-    const activeEl = document.querySelector('.is-active');
+  const currentElement = evt.target;
+  const currentValue = currentElement.dataset.value;
+  const activeEl = document.querySelector('.is-active');
 
-    // if (!currentValue) {
-    //     return;
-    // }
+  // if (!currentValue) {
+  //     return;
+  // }
 
-    if (evt.target.nodeName !== 'BUTTON') {
-        return;
-    }
+  if (evt.target.nodeName !== 'BUTTON') {
+    return;
+  }
 
-    coursesContainer.innerHTML = '';
+  coursesContainer.innerHTML = '';
 
-    if (activeEl) {
-        activeEl.classList.remove('is-active');
-    }
+  if (activeEl) {
+    activeEl.classList.remove('is-active');
+  }
 
-    currentElement.classList.add('is-active');
+  currentElement.classList.add('is-active');
 
-    const filteredCourses = courses.filter(course => {
-        return course.tags.includes(currentValue);
-    });
+  const filteredCourses = courses.filter(course => {
+    return course.tags.includes(currentValue);
+  });
 
-    markupFilteredCourses(filteredCourses);
+  markupFilteredCourses(filteredCourses);
 }
 
 function markupFilteredCourses(ourCourses) {
-    const createItemCourse = ourCourses
-        .map(course => {
-            return `<li><p>${course.name} - ${course.price}$</p></li>`;
-        })
-        .join('');
+  const createItemCourse = ourCourses
+    .map(course => {
+      return `<li><p>${course.name} - ${course.price}$</p></li>`;
+    })
+    .join('');
 
-    return coursesContainer.insertAdjacentHTML('beforeend', createItemCourse);
+  return coursesContainer.insertAdjacentHTML('beforeend', createItemCourse);
 }
