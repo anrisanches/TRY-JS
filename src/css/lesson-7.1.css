@@ -97,3 +97,7 @@ body {
 .is-active {
     background-color: steelblue;
 }
+
+.cat-img{
+    display: block;
+}

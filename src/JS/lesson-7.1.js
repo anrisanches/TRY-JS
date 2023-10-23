@@ -1,9 +1,9 @@
 ('use strict');
+import {picturesCats} from"./data/pictures-cat.js"
 import color_pickers from './data/color-pickers.js';
 import { courses } from './data/courses.js';
 
 //-----Выбирает одну кнопку из всех-------------
-
 // const containerRefs = document.querySelector('.container');
 // containerRefs.addEventListener('click', onBtnCurrentClick);
 // let selectedTag = null;
@@ -352,3 +352,22 @@ function markupFilteredCourses(ourCourses) {
 
   return coursesContainer.insertAdjacentHTML('beforeend', createItemCourse);
 }
+
+//---------------------------------CAT--------------
+const catsPicturesRef = document.querySelector('.js-cat-pictures');
+
+function markupCat (arrCats) {
+  return arrCats.map(({src, alt})=>`
+  <article class="cat-article">
+  <img class="cat-img" src="${src}" alt="${alt}" width="300" height="200"
+  loading="lazy">
+  <h2 class="title-article">${alt}</h2>
+  <p class="text-article">THIS IS MY CAT</p>
+  </article>`).join('')
+};
+
+
+
+markupCat(picturesCats)
+
+catsPicturesRef.innerHTML = markupCat(picturesCats);
