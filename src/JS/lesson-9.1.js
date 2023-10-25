@@ -1,5 +1,5 @@
-import { getTimeComponents } from "./helpers/helpers9.1";
-import { pad } from "./helpers/helpers9.1";
+import { getTimeComponents } from './helpers/helpers9.1';
+import { pad } from './helpers/helpers9.1';
 // const containerRef = document.querySelector('.container');
 // const a = 'FUCK'
 // console.log('1');
@@ -30,44 +30,44 @@ import { pad } from "./helpers/helpers9.1";
 const refs = {
   clockFace: document.querySelector('.js-clockFace'),
   startBtn: document.querySelector('button[data-action-start]'),
-  stopBtn: document.querySelector('button[data-action-stop]')
-}
+  stopBtn: document.querySelector('button[data-action-stop]'),
+  saveTime: document.querySelector('.js-clockFace-save'),
+};
 
-refs.clockFace.textContent = '00:00:00'
+refs.clockFace.textContent = '00:00:00';
 
 class Timer {
-  constructor({onTick}){
-
+  constructor({ onTick }) {
     this.intervalId = null;
     this.isActive = false;
     this.onTick = onTick;
   }
 
-  start(){
+  start() {
     if (this.isActive) {
-      return
+      return;
     }
 
     this.isActive = true;
-     const startTime = Date.now()
-    
-     this.intervalId = setInterval(() => {
-      const currentTime = Date.now()
+    const startTime = Date.now();
+
+    this.intervalId = setInterval(() => {
+      const currentTime = Date.now();
       const calculateTime = currentTime - startTime;
       const timeComponents = getTimeComponents(calculateTime);
       const time = timeComponents;
       // const {hours,mins,secs} = timeComponents;//spread with result fn
-      // console.log(`${hours}:${mins}:${secs}`); 
+      // console.log(`${hours}:${mins}:${secs}`);
 
-      this.onTick(time)
-     }, 1000);
-  };
-
-  stop(){
-    clearInterval(this.intervalId)
-    this.isActive = false
+      this.onTick(time);
+    }, 1000);
   }
 
+  stop() {
+    refs.clockFace.textContent = '00:00:00';
+    clearInterval(this.intervalId);
+    this.isActive = false;
+  }
 }
 // const timer = {
 //   intervalId: null,
@@ -79,13 +79,13 @@ class Timer {
 
 //       this.isActive = true;
 //        const startTime = Date.now()
-      
+
 //        this.intervalId = setInterval(() => {
 //         const currentTime = Date.now()
 //         const calculateTime = currentTime - startTime;
 //         const timeComponents = getTimeComponents(calculateTime);
 //         const {hours,mins,secs} = timeComponents;//spread with result fn
-//         // console.log(`${hours}:${mins}:${secs}`); 
+//         // console.log(`${hours}:${mins}:${secs}`);
 
 //         updateClockFace({hours,mins,secs})
 //        }, 1000);
@@ -97,29 +97,25 @@ class Timer {
 //     }
 // };
 
-const timerClass = new Timer(
-  {
-    onTick: updateClockFace,
-  }
-);
+const timerClass = new Timer({
+  onTick: updateClockFace,
+});
 
-console.log(timerClass);
+refs.startBtn.addEventListener('click', timerClass.start.bind(timerClass));
 
-refs.startBtn.addEventListener('click',timerClass.start.bind(timerClass))
-
-refs.stopBtn.addEventListener('click',()=>{
-  // timer.stop()
-  timerClass.stop()
-  // refs.clockFace.textContent = '00:00:00'
-
-})
+refs.stopBtn.addEventListener('click', () => {
+  JSON.stringify(localStorage.setItem('stop-timer', refs.clockFace.textContent));
+  savedTimer();
+  timerClass.stop();
+});
 
 function updateClockFace({ hours, mins, secs }) {
   refs.clockFace.textContent = `${hours}:${mins}:${secs}`;
 }
 
-
-
-
-
+function savedTimer() {
+  const json = localStorage.getItem('stop-timer');
+  refs.saveTime.textContent = json;
+  localStorage.removeItem('stop-timer')
+}
 
