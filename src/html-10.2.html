@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/lesson-10.2.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="./index.html">Return</a>
+    <div class="character-container"></div>
+    <button class="container-button">MORE INFORMATION</button>
+    <div class="js-guard"></div>
+
+    <form class="form-inline search-form js-search-form">
+      <div class="from-group">
+        <label for="seasrchQuery" class="sr-only">What you search</label>
+        <input
+          type="text"
+          class="form-control"
+          name="query"
+          id="seasrchQuery"
+          placeholder="What you search?"
+          autocomplete="off"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">Search</button>
+    </form>
+
+    <ul class="articles js-articles-container"></ul>
+
+    <button type="button" class="btn btn-primary button" data-action="load-more">
+      <span class="spinner is-hidden" role="status" aria-hidden="true"></span>
+
+      <span class="label">See more</span>
+    </button>
+    
+    <script type="module" src="./JS/lesson-10.2.js"></script>
+  </body>
+</html>
