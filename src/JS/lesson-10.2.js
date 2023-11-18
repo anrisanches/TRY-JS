@@ -110,7 +110,7 @@ function onFormSubmit(e) {
   newsApiService.fetchArticles().then(articles=>{
     clearArticleContainer()
     markupArticle(articles)
-  })
+  })  
   // newsApiService.fetchArticles().then(markupArticle)
   // newsApiService.fetchArticles().then(articles => console.log(articles))
 

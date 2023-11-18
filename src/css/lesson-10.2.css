@@ -1,3 +1,13 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+button{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* font-family: sans-serif; */
+}
+
 .character-container{
     display: grid;
     grid-template-columns: repeat(2, 200px);
@@ -19,4 +29,50 @@
 .container-button{
     margin-top: 10px;
     padding: 10px;
+}
+
+.btn-primary.button:hover,
+.btn-primary.button:focus {
+    background-color: aqua;
+    color:blueviolet;
+    letter-spacing: 5px;
+    font-weight: 700;
+    text-shadow:2px 2px 20px #ff0000, -5px -5px 5px #000000;
+}
+
+.btn-primary.button{
+    width: 250px;
+    height: 50px;
+    text-decoration:underline;
+    text-transform: capitalize;
+    text-align: left;
+    font-size: larger;
+    font-weight: 400;
+}
+
+.text-for-training{
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 350px;
+    color:brown;
+
+    padding: 5px;
+}
+
+.text-container-for-training{
+    width: 400px;
+    padding: 10px;
+    /* margin-right: auto;
+    margin-left: auto; */
+margin: 0 auto;    
+    border: 2px dotted red;
+    /* border: 2px dashed red; */
+    
+}
+
+.text-for-training::selection{
+    display: inline;
+    color: rgb(135, 162, 185);
+    background-color: rgb(24, 66, 66);
+    margin: 200px 200px 200px 200px;
 }
