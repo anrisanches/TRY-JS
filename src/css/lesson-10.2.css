@@ -55,9 +55,18 @@ button{
     border-radius: 10px;
     width: 350px;
     color:brown;
-
     padding: 5px;
+
+    transition: background-color 500ms linear;
 }
+
+.text-for-training:hover,
+.text-for-training:focus{
+    background-color: aqua;
+    opacity: 0.4;
+    /* z-index: -1; */
+}
+
 
 .text-container-for-training{
     width: 400px;
@@ -67,8 +76,34 @@ button{
 margin: 0 auto;    
     border: 2px dotted red;
     /* border: 2px dashed red; */
+
     
 }
+
+.text-container-for-training-btn{
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: none;
+    margin: 0;
+    background-color: #c26ad8;
+    padding: 20px;
+    border-radius: 20px;
+    cursor: cell;
+    color: antiquewhite;
+
+    transition-property: background-color;
+    transition-duration: 1500ms;
+    transition-timing-function: ease;
+}
+
+
+
+.text-container-for-training-btn:hover,
+.text-container-for-training-btn:focus{
+    background-color: #87b2cf;
+}
+
 
 .text-for-training::selection{
     display: inline;
